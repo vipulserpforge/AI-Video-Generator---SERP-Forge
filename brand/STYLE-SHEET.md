@@ -1,10 +1,10 @@
 # SERP Forge video style sheet
 
-> **Status: LOCKED, v2 approved 2026-11-16 (subtitles at y 1268 px, below the Reels/Shorts safe line, accepted on purpose).** v1 (approved, no subtitles) is in `brand/_old/2026-11-16-v1/`. Change only when asked, and move the old version to `brand/_old/` first. Reference frames: `brand/style-frames/01-title.png` to `04-logo-outro.png`.
+> **Status: LOCKED, v6 approved 2026-11-17, sound section updated with the approved premium effects (serpforge-sound skill):** visuals fill the marked box (x 80 to 1000, y 585 to 1510), and every boxed visual is a window card (title bar, window dots, lowercase title). Builds on v5 (white transcription, smoothness rules, handovers, 17-format library). Reference check: `videos/2026-11-test-run/04_storyboard/storyboard-v9.png`, build `videos/2026-11-test-run/05_build/project-v8-check/`. v5 is in `brand/_old/2026-11-17-v5/`. Change only when asked, and move the old version to `brand/_old/` first.
 
 Vertical 1080 x 1920, 30 fps. Colours, fonts and design come from our website (`brand/screenshots/`). Pacing, motion and sound come from `references/analysis/REFERENCE-ANALYSIS.md`. Every value here is also a variable in `brand/tokens.css`: use the variable, never a raw value.
 
-**The look in one line:** a dark charcoal-green UI world with a faint grid and a soft teal glow, white geometric headlines with one italic serif phrase in a mint-to-peach gradient, orange for action, and real-looking cards and data.
+**The look in one line:** a dark charcoal-green UI world with a fine dot pattern and a soft teal glow, white geometric headlines with one italic serif phrase in a mint-to-peach gradient, orange for action, and real-looking cards and data.
 
 ## 1. Colours
 
@@ -17,7 +17,7 @@ Every hex was sampled from the screenshots or the logo by script (k-means plus m
 | `--c-bg-raise` | `#0E1917` | Raised | Large panels |
 | `--c-surface` | `#121A19` | Card | Card fill |
 | `--c-border` | `#2C3534` | Line | 1 px card border, dividers |
-| `--c-grid` | `#FFFFFF` at 4 % | Grid | Background grid lines |
+| `--c-dot` | mint `#ABDCD6` at 20 % | Dots | Background dot pattern (replaces the old line grid) |
 | `--c-glow` | `#0F3832` | Teal glow | Radial glow behind the focal point |
 | `--c-text` | `#FFFFFF` | White | Headlines, numbers |
 | `--c-text-2` | `#B2B4B4` | Mist | Body and secondary text |
@@ -62,15 +62,20 @@ Signature gradient (the italic serif phrase only): `--g-italic` = `#C2E4DC` to `
 
 | Use | Font | Weight | Size (px) | Line height | Tracking | Max words per line |
 |---|---|---|---|---|---|---|
-| Title / hook | Outfit | 700 | 104 | 1.02 | -2 % | 3 |
-| Italic phrase in a title | Playfair Display Italic | 500 | 112 | 1.0 | -1 % | 3 |
-| Hero number | Outfit | 700 | 220 | 0.95 | -3 % | 1 number (5 characters max) |
-| Heading | Outfit | 600 | 72 | 1.1 | -1 % | 5 |
-| Body | Outfit | 400 | 44 | 1.35 | 0 | 6 |
-| Card title | Outfit | 600 | 48 | 1.2 | 0 | 4 |
-| Label (uppercase) | Outfit | 600 | 30 | 1.2 | +12 % | 3 |
-| Small note (minimum) | Outfit | 400 | 32 | 1.3 | 0 | 6 |
+| Transcription, normal words | Outfit | **400**, white | 76 (2 lines) / 64 (3 lines) | 1.12 | -1 % | 5 |
+| Transcription, key words | Outfit | **700 (bold)**, white | same as the line | 1.12 | -1 % | 1 to 3 words |
+| Transcription, italic key phrase | Playfair Display Italic | 500 | line size + 8 | 1.0 | -1 % | 3 |
+| Hero number (visuals zone) | **Inter** | 700 | 220 | 0.95 | -3 % | 1 number (5 characters max) |
+| Heading (visuals zone) | **Inter** | 600 | 72 | 1.1 | -2 % | 5 |
+| Body / UI text (visuals zone) | **Inter** | 400 | 44 | 1.35 | -1 % | 6 |
+| Card title / names (visuals zone) | **Inter** | 600 | 48 | 1.2 | -1.5 % | 4 |
+| Label (uppercase, visuals zone) | **Inter** | 600 | 30 | 1.2 | +10 % | 3 |
+| Window title (lowercase) | **Inter** | 500 | 24 | 1 | +1 % | 3 |
+| Small note (minimum, visuals zone) | **Inter** | 400 | 32 | 1.3 | 0 | 6 |
+| Outro (logo line, tagline, CTA pill) | Outfit 700 + Playfair Display Italic | as before | | | | |
 
+- **Which font where:** **Inter** for every piece of text inside the visuals zone (cards, window titles, labels, chips, rows, numbers, chart labels, UI copy) in every scene except the outro. **Outfit** (+ the Playfair Display Italic accent) only for the transcription zone and the logo outro scene. The watermark stays Outfit.
+- Inter is bundled with HyperFrames (write `font-family: "Inter", sans-serif;` literally). Use `font-variant-numeric: tabular-nums` on counters.
 - Outfit is the closest free Google Font to the site's geometric sans. Playfair Display Italic matches its italic serif. Both come bundled with HyperFrames.
 - Numbers use `font-variant-numeric: tabular-nums` so counters don't jitter.
 - One italic serif phrase per title, at most. It always carries `--g-italic`.
@@ -78,97 +83,171 @@ Signature gradient (the italic serif phrase only): `--g-italic` = `#C2E4DC` to `
 
 ## 3. Layout
 
-- **Platform safe zone** (the TikTok, Reels and Shorts zones combined, from `hyperframes check`): all readable text inside **x 120 to 888 px, y 288 to 1248 px**. Below y = 840 px, text also stays left of x = 780 px (TikTok's button rail). Cards, glows and charts may reach x 72 to 1008, but the text inside them obeys the zone. Above 288 px only background, glow, decoration or the watermark. Below 1248 px only the subtitle band (section 7) and background.
-- **Alignment:** left-aligned on the 120 px line, like the website. Centred layouts are not used, because the safe zone sits left of the frame's centre.
-- **Grid:** text column x 120 to 888 (768 px). 8 px spacing unit (gaps of 16, 24, 32, 48, 64, 96).
-- **Composition:** label at y about 340, title from y about 390 (upper third), focal element y 640 to 1230. Nothing else enters the subtitle band (y 1250 to 1380).
-- **Background:** `--c-bg` with a faint 56 px grid (4 % white) and one radial teal glow (`--c-glow`) behind the focal point. Optional warm orange glow under a CTA.
+- **Platform safe zone** (the TikTok, Reels and Shorts zones combined, from `hyperframes check`): all readable text inside **x 120 to 888 px, y 288 to 1248 px**. Below y = 840 px, text also stays left of x = 780 px (TikTok's button rail). The frame zones (below) were set by hand and take priority: the transcription zone starts at y 240 and the visuals zone runs to y 1510. Inside the visuals zone, keep readable text above y 1248 where possible, because the apps draw their caption and buttons lower down.
+- **Alignment: center-aligned.** Every title, label, number, card and visual sits on the frame's vertical centre line (x = 540 px), with text set `text-align: center`. Text inside a UI card (rows, chips, lists) may stay left-aligned like real UI, but the card itself is centred.
+- **Grid:** centred text column **x 192 to 888 (696 px, centre 540)**. Below y = 840 px a centred text line is at most 480 px wide (x 300 to 780). 8 px spacing unit (gaps of 16, 24, 32, 48, 64, 96).
+- **Cards:** centred, sized to fill the visuals zone (about 860 to 920 px wide). Text inside cards may reach the card's right edge; note that below y = 840 px TikTok's button rail can sit over x 780 to 1000.
+- **Frame zones (fixed, every video, every scene).** Each zone holds only its own content, centred on x = 540 px:
+
+  | Zone | Box (1080 x 1920) | Holds |
+  |---|---|---|
+  | **Transcription** | x 108 to 972, **y 240 to 495** | The words spoken in the scene, typed in letter by letter with the voice (section 7). Nothing else. |
+  | **Visuals** | **x 80 to 1000, y 585 to 1510** (920 x 925, centre x 540, y 1047) | Every visual, animation and UI element: cards, charts, icons, numbers, the logo. An invisible area (no box) lit by the colour drop. Nothing else. |
+  | **Watermark** | x 108 to 972, **y 1656 to 1718** | The text "serpforge.io" (section 8). Nothing else. |
+
+  Between and around the zones: only background and glow.
+- **Visuals fill their zone.** Every visual composition (cards, charts, icons, logo, diagrams, together) is centred on x 540, y 1047 and **fills 85 to 100 % of the zone's width or height**, whichever it reaches first. It never spills outside the zone and is never a small object floating in empty space. Scale the whole composition up (cards about 860 to 920 px wide, card text about 1.25 times the base sizes) rather than adding more elements.
+- **Colour drop (light behind the visuals zone):** not a box. A soft radial teal-green light centred on the visuals zone (x 540, y 1047), about 1500 x 1500 px, from `rgb(22,84,66)` at the centre through `rgb(16,62,50)` to nothing at the edge, so it fades into the background with no edge, border or shadow (matched to the website hero: `#0D2D25` glow on `#0A1110`). The dot pattern stays visible through it. The visuals zone itself is only an area: every visual, animation and UI element appears inside it, centred, on top of this light.
+- **Background:** `--c-bg` with a fine **dot pattern** (no line grid): small round dots, 1.4 px radius (`--dot-size`), 28 px apart (`--dot-gap`) in an even square pattern, mint at 20 % (`--c-dot`), softly fading towards the frame edges (`--dot-mask`: full strength in the centre, about 35 % at the edges), lit by the colour drop behind the visuals zone. Never animated. CSS: `.grid { background-image: var(--dot-bg); background-size: var(--dot-gap) var(--dot-gap); background-position: 14px 14px; mask-image: var(--dot-mask); }`. Optional warm orange glow under a CTA.
 - **Corner radius:** cards 32 px, inner elements and inputs 20 px, buttons and pills 999 px (fully round), icon tiles 20 px.
-- **Cards:** `--c-surface` fill, 1.5 px `--c-border` border, 32 px padding, soft shadow `0 24px 60px rgba(0,0,0,.45)`. The hero card can carry a 1.5 px orange or teal border instead.
-- **Icons:** 2 px outline line icons in `--c-text-2`, or a filled icon inside a 20 px-radius tile tinted `--c-bg-deep`. Real tool logos are shown only as small marks on cards.
+- **Window card (every boxed visual):** whenever a visual sits in a box (UI, a chat, a report, a repo, a chart, a terminal), it is a premium desktop-app window, like a macOS window:
+  - **Frame:** `--c-surface` fill, radius 28 px, 1.5 px `--c-border` border, shadow `0 24px 60px rgba(0,0,0,.45)`.
+  - **Title bar:** 56 px tall, a slightly darker fill (`--win-bar` `#0E1514`) with a 1 px `--c-border` line under it.
+  - **Window dots:** three 14 px dots, 10 px apart, 24 px from the left edge, vertically centred: red `#F8534D`, amber `#E2A63D`, green `#31CD88`, each at 85 % opacity.
+  - **Title:** centred in the bar, lowercase, Outfit 500, 24 px, sage `#77918C`, letter spacing +2 % (for example "repository", "ai search", "analytics", "terminal").
+  - **Body:** 32 px padding under the bar. A small breadcrumb line (icon + "owner / **name**") and an outlined pill tag are good openers, as in the reference.
+  - The title bar replaces a separate uppercase card label when they would say the same thing.
+  - Not every visual needs a box: hero objects, stamps, counters, constellations and orbits stay free-standing. When there is a box, it is always a window card.
+- **Icons, logos and images** (full rules: the serpforge-visual-assets skill): icons from **Phosphor** (duotone for features, fill for tiny status marks; Lucide only as a fallback), chosen for the exact idea, mint or white with a meaning-coloured second tone, in a 20 px-radius tile (`--c-bg-deep`, mint border at 15 %). Never letters, numbers or emoji standing in for an icon. **Logos are always the official marks** (theSVG / Simple Icons / the brand's own files), never redrawn; on dark use the light variant or a white tile. **Real images and Chrome screenshots** wherever the script names something real, lightly finished (crop, clarity, a gentle teal grade for photos) and shown inside a window card.
 - **Elements:** at most 4 meaningful elements on screen (title + up to 3). One focal point.
 
 ## 4. Motion
 
+**The goal is smooth, never jumpy:** fast pace, but every change is spread over several frames on one continuous canvas, like references 4 and 5. Measured with `references/analysis/tools/smooth.py` on every render: **burstiness at most 60 %** (refs 48 to 57 %, our first test 78 %) and **no single-frame pops**.
+
 | Token | Curve | Use |
 |---|---|---|
-| `--ease-out` | `cubic-bezier(.16, 1, .3, 1)` (expo.out) | All arrivals |
-| `--ease-back` | `cubic-bezier(.34, 1.56, .64, 1)` (back.out 1.4) | Tiles, badges, number landings (overshoot ~6 %) |
-| `--ease-in` | `cubic-bezier(.7, 0, .84, 0)` (power3.in) | Exits, zoom-through |
-| `--ease-inout` | `cubic-bezier(.65, 0, .35, 1)` (power2.inOut) | Camera moves, colour floods |
+| `--ease-out` | `cubic-bezier(.16, 1, .3, 1)` (expo.out) | Arrivals of big elements (cards, charts, the stage) |
+| `--ease-soft` | `cubic-bezier(.22, 1, .36, 1)` (power3.out) | Arrivals of text, icons and small items |
+| `--ease-back` | `cubic-bezier(.34, 1.3, .64, 1)` (back.out 1.2) | Only small chips and badges (overshoot about 3 %). Never on cards, charts or text |
+| `--ease-exit` | `cubic-bezier(.55, 0, 1, .45)` (power2.in) | Exits |
+| `--ease-inout` | `cubic-bezier(.65, 0, .35, 1)` (power2.inOut) | Morphs, carries, camera drift |
 
-- **Durations:** entrance 0.5 s (cards and titles), 0.35 s for small items. Exit 0.25 s (about half the entrance). Transitions 0.35 to 0.6 s.
-- **Stagger:** words 0.08 s, list items 0.06 s, cards 0.12 s. The next element starts when the previous one is about 40 % done.
-- **Text reveal:** per word, a mask wipe from below (the word rises 40 % of its height inside a clipped line box) plus blur 6 px to 0, over 0.4 s. Each word lands on its spoken word (within 2 frames). The highlighted word lands last.
-- **Highlight:** the key word gets a 16 px-radius orange box (`--c-orange` at 18 %) that wipes in left to right in 0.25 s after the word lands.
-- **Numbers:** count up over 0.8 to 1.4 s with an accelerating start and a soft landing (expo.out on the value). A bar, ring or line grows with them. On landing: a 1.06 to 1.0 scale settle (back.out) plus the number sound.
-- **Camera:** the whole stage drifts 12 to 24 px vertically over a scene, with power2.inOut. A scale drift is allowed only on full-frame imagery with no text near the safe-zone edges, because scaling pushes edge text out of the zone. Never a creeping zoom on a landed title.
-- **Landed titles stay dead still.** No floating, breathing or pulsing loops.
-- **Motion blur:** 6 to 12 px on fast moves (whips, tile wipes) only.
-- **Rhythm:** something new every 2 to 3 s, never more than 3.5 s without a change. Scenes 2 to 6 s long.
+**Smoothness rules (every video):**
+1. **One continuous canvas.** The background, dot pattern, colour drop and zones never cut or move. Only the objects in the visuals zone change. No hard cuts and no full-frame wipes, whips or zooms.
+2. **Objects become the next object.** Hand a scene over by turning what is on screen into what comes next (section 5): a card shrinks and moves aside as the next one grows, a chip grows into a panel, an icon bursts into the next set of icons.
+3. **Build, don't swap.** Lists, grids, timelines and charts grow one item per spoken word instead of appearing whole.
+4. **Short travel.** Entrances move 24 to 80 px at most (never in from off-screen), always combining opacity 0 to 1, scale 0.92 to 1 and blur 6 px to 0.
+5. **Durations:** big elements enter in 0.55 to 0.75 s, text and small items in 0.35 to 0.5 s. Exits take 0.3 to 0.4 s (opacity to 0, blur to 6 px, scale to 0.96). Nothing visible changes in under 0.25 s.
+6. **Overlap.** The next element starts when the previous one is 30 to 50 % done. An exit always overlaps the next entrance by at least 0.15 s, so the frame is never empty.
+7. **One or two fast things at a time.** Everything else holds still or drifts slowly. Never more than 2 elements in fast motion in the same 0.3 s.
+8. **Nothing pops.** No element appears at full size in one frame, jumps position, or flashes. Colour changes (word fill, highlight) take at least 0.2 s.
+9. **Stagger:** words 0.06 to 0.1 s, list items and grid cells 0.04 to 0.08 s, cards 0.12 to 0.18 s.
+10. **Gentle life.** The stage drifts 12 to 24 px over a scene (power2.inOut), so the canvas is never fully frozen. Landed text stays dead still. No floating, breathing or pulsing loops.
+11. **Motion blur:** `data-motion-blur="on"` for moves faster than about 800 px/s.
+12. **Numbers:** count over 0.8 to 1.4 s (expo.out on the value) while a bar, ring or line grows with them. Land with a 1.03 to 1.0 settle.
+13. **Rhythm:** something new every 1.5 to 3 s, never more than 3.5 s without a change. Scenes 2 to 6 s long.
 
-## 5. Transitions (use only these four)
+## 5. Scene handovers (no full-frame transitions)
 
-| Transition | How | When |
+| Handover | How | When |
 |---|---|---|
-| **Tile wipe** (signature) | A grid of 120 px rounded squares in the logo's teal, mint and orange sweeps diagonally across in 0.5 s (ease-inout) and reveals the next scene | Between chapters and big ideas (at most 3 per video) |
-| **Card zoom-through** | The focal card scales up past the frame in 0.5 s (ease-in); its fill becomes the next background | Going "into" a tool, report or detail |
-| **Blur swap** | Out: opacity to 0 with 8 px blur in 0.2 s. In: blur 8 to 0 in 0.25 s. The background stays | Between points inside the same idea (the most common) |
-| **Whip** | 0.25 s vertical smear (12 px motion blur), the arriving element lands blurred and sharpens | Fast lists, "but" turns, pace boosts |
+| **Morph** | The focal object reshapes into the next one (a chip widens into a panel, a card becomes a phone, a number becomes a chart's last point) in 0.5 to 0.7 s, power2.inOut | The next idea grows out of this one (the most common) |
+| **Carry** | The focal object shrinks to 0.6 to 0.7 and moves aside (or up), staying on screen, while the next object grows in beside it | Cause and effect, before and after, "and then" |
+| **Build-on** | Nothing leaves: new items, rows, branches or connectors are added to the current visual | Lists, steps, growth, "and also" |
+| **Soft crossfade** | The old visual fades to 0 with 6 px blur and scale 0.96 over 0.4 s while the new one fades in from scale 0.94 over 0.5 s, overlapping 0.2 s. Only inside the visuals zone | A new topic with nothing to morph from |
 
-No crossfades between scenes and no hard cut without a sound. At most a third of scene changes are plain cuts.
+The old tile wipe, whip and card zoom-through are retired: they moved the whole frame at once and made the test video feel jumpy.
 
 ## 6. Sound
 
-Real recorded sounds from `library/sfx` (the Real SFX skill), checked with earshot.
+The full sound rules live in the **serpforge-sound** skill (`.claude/skills/serpforge-sound/SKILL.md`). It is used automatically in every video (CLAUDE.md steps 5 and 9). Summary:
 
-| Moment | Sound | Level |
+- **Nine approved premium effects only** (`library/sfx/premium/approved/`, approved by ear 2026-11-17 and 2026-11-18): whoosh, riser, sub-drop, pop/blip, click/tap, camera shutter, light/shine, pop-in, breaking. Real recordings, cleaned to be smooth (soft start, no harsh highs, long natural tail). Nothing synthesised, nothing random.
+- **Use only where the picture needs it:** whoosh on handovers, riser into a key reveal (ending on it), sub-drop for weight (big claim, stat, problem, logo), pops for things appearing, pop-in for small elements popping in with a bounce, light for anything that lights up or glows into view, breaking for anything that breaks, fails or is rejected, clicks for UI interactions, shutter for capturing proof. Not every type in every video.
+- **Restraint:** at most 2 risers, 3 sub-drops and 2 shutters per video; never two strong sounds within 0.15 s; at least 1.5 s of air in every 10 s; 0.6 to 1.8 effects per second.
+
+| Type | Level (peak) | Aligned to |
 |---|---|---|
-| Transition (tile wipe, whip, zoom) | Soft air whoosh, 0.25 to 0.5 s, peaks on the transition's fastest frame | -18 dB |
-| Text reveal (key title) | Light UI tick or soft pop on the highlighted word | -24 dB |
-| Card or UI element in | Bubble pop or click | -22 dB |
-| Number count | A quick tick roll during the count and a bright ding on landing | ticks -28 dB, ding -18 dB |
-| Impact (big claim, problem) | Low soft hit or sub thump | -16 dB |
-| Click (button, toggle) | Real mouse click | -20 dB |
-| Logo outro | Short warm chime or riser into a soft hit | -16 dB |
+| Whoosh | -22 dB | its peak on the fastest frame |
+| Riser | -24 dB | its end on the reveal frame |
+| Sub-drop | -18 dB | its onset |
+| Pop / blip | -24 dB | its onset |
+| Click / tap | -26 dB (typing -30 dB) | its onset |
+| Shutter | -22 dB | its onset |
 
-- **Voice:** -16 LUFS on its own, peaks no higher than -3 dBFS. Always the loudest thing.
-- **Music:** modern tech or lo-fi bed with no vocals and a soft beat. -30 LUFS under the voice (about 14 to 18 dB below it). Ducks a further 8 to 10 dB whenever the voice speaks and returns within 0.3 s in pauses.
-- **Effects:** -18 to -28 dB (table above) so they never mask a word.
-- **Master:** -14 LUFS integrated, true peak -1 dBTP.
-- Every transition gets a sound. Every key reveal gets a sound. Never two strong sounds within 0.15 s.
+- **Voice first:** effects are noticed but never disturb the voice-over. Under a spoken word an effect is lowered 5 dB, its 2.5 kHz speech band is carved out, and it stays at least 10 dB below the voice in the speech band; it still sits at least level with the music (3 dB above it in pauses). When an effect is too quiet the music dips briefly to make room; the voice is never lowered. Important effects go in the pauses between phrases.
+- **Voice:** -16 LUFS on its own, always the loudest thing.
+- **Music: none by default.** The soundtrack is the voice-over plus the premium effects only (decided 2026-11-17: music made the voice less clear). Only if music is requested for a specific video: a soft ambient pad with no drums, vocals or lead melody, about 24 dB under the voice (-32 LUFS in pauses, ducked 10 dB more under speech, speech band cut out), as the serpforge-sound skill describes.
+- **Master:** -14 LUFS integrated (stereo, as delivered), true peak at most -1 dBTP. Built by the skill's mixer (`scripts/mix.py`), checked with earshot critique.
 
-## 7. Subtitles
+## 7. Transcription zone
 
-Based on Reference 1 (a pill under the content, words filling in as they are spoken, a solid box on the key word) and Reference 2 (grey-to-white word fill, keyword box), restyled in our colours.
+Premium, light and readable, like references 4 and 5. Same fonts (Outfit + Playfair Display), lighter weights.
 
-- **What:** the spoken words, exactly as in `02_audio/transcript.json`. Every word of the voice-over, never paraphrased.
-- **Where:** one line, **left-aligned at x = 120 px, pill top at y = 1268 px** (about 650 px from the bottom, the HyperFrames portrait position). The text never passes x = 780 px (TikTok's button rail), so the pill is at most 660 px wide. Lower than about y 1400, the app's own caption, username and buttons cover the text.
-- **Pill:** fill `--c-surface` at 94 %, 1.5 px `--c-border` border, radius 24 px, padding 16 px top and bottom and 28 px left and right, shadow `--shadow-card`. Height about 92 px.
-- **Type:** Outfit 600, 52 px, line height 1.1, tracking -1 %. Fit with `fitTextFontSize` (max 52, min 44) and never wrap to 2 lines.
-- **Colours:** words still to come in sage `#77918C` (5.2:1 on the pill), the word being spoken and words already said in white `#FFFFFF` (17.7:1). The one key word per group gets an orange `#F8640A` box (radius 12 px) with ink `#0A0E0D` text (6.3:1).
-- **Groups:** 2 to 4 words (conversational). Break at a sentence end, a pause of 150 ms or more, or 4 words. One group on screen at a time. Never split a number from its unit ("12 pages").
-- **Timing:** a group appears 0.05 s before its first word (never at exactly 0 s: start 0.1 to 0.3 s in) with blur 6 px to 0 and y 12 to 0 px in 0.15 s (expo.out). Each word turns white at its start time in 0.08 s. The key word's box wipes in left to right in 0.15 s. The group leaves at its last word's end: opacity to 0 in 0.12 s (power2.in), then a hard kill.
-- **Key word:** the same word the visual script highlights on screen, or the number. At most one per group, and not in every group (about one group in three).
-- **Never** over a card, chart or the focal point, never two lines, never ALL CAPS, never emojis.
+- **What:** the exact words spoken in the scene (from `02_audio/transcript.json`), never paraphrased. No bottom subtitle pill.
+- **Where:** the transcription zone, y 240 to 495, centred, `text-align: center`, text column x 192 to 888 (696 px).
+- **Type:** every word is **white** `#FFFFFF` (19.4:1 on the background). Normal words Outfit **400**; highlighted key words **bold**, Outfit **700**. The italic accent is the one exception (style 2 below keeps its gradient). Size: **76 px for up to 2 lines, 64 px for 3 lines**, line height 1.12, tracking -1 %. Never more than 3 lines.
+- **Shadow (subtle):** `text-shadow: 0 2px 10px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.35)`. It lifts the words off the dots and glow without a visible halo.
+- **Which words get highlighted (all styles):** only the **important** word or phrase of the line, the one that carries its meaning: the result or promise ("found", "visibility", "#1"), the problem ("not listed", "invisible"), a number or stat ("25,000", "3x"), a brand or product name ("SERP Forge", "ChatGPT"), or the action asked of the viewer ("book a call"). Choose it from the audio script's meaning and the voice's stress (a word in CAPITALS in the audio script is a strong candidate).
+  - **Never highlight filler or function words:** and, or, but, the, a, an, in, on, of, to, for, with, it, is, are, your, our, this, that, so, just, very, really, or similar. If the key idea is a phrase, highlight the whole short phrase (2 to 4 words, e.g. "AI answers", "on it?"), never only its small connecting word.
+  - When the important word is unclear, pick the noun or verb a viewer would remember from the line. If nothing in a line is important, highlight nothing in it.
+  - At most one highlighted word or phrase per line and 1 to 3 per scene.
+- **Key words:** 1 to 3 important words or phrases per scene (rule above), in **one** of these styles per scene (vary them across the video):
+  1. **Bold:** the key word is set in Outfit 700, white, like the rest of the line but bold. It appears bold from its first frame (no weight animation).
+  2. **Italic accent (unchanged):** the word or short phrase in Playfair Display Italic with the mint-to-peach gradient (`--g-italic`).
+  3. **Selection frame (animated, like reference 5):** a 2 px orange (`--tx-frame`) rectangle with four solid 8 px orange square corner handles and a faint orange tint inside (orange at 10 %) around the key word or phrase, like a design-tool selection being dragged out. The word itself is bold (Outfit 700), white. It never just appears:
+     - **Open:** on the first key word's start time it fades in over 2 frames as a small box around that first word (about a third of the phrase's width), handles already on its corners.
+     - **Stretch:** it then stretches to the right over the rest of the phrase as those words are spoken (with typing, it follows the caret), width only, height fixed, eased `back.out(1.2)` so it overshoots a few pixels and settles, about 0.4 s. A one-word key word stretches from about a third of its width to full over 0.3 s.
+     - **Handles** ride on the corners the whole time (they never scale or stretch). No pulsing, no colour change, no bounce.
+     - **Leave:** it fades out with its phrase. Build it as an outer frame plus an inner box whose width is animated (never `scaleX`, which would stretch the handles).
+  4. **Highlight box (rare):** a 12 px-radius solid box in **`#F8981C`** (`--c-highlight`, no transparency) behind the bold key word, wiping in left to right in 0.3 s. The word on it is dark ink `#0A0E0D` (`--c-highlight-ink`, 8.8:1) with no text shadow, because white on `#F8981C` is only 2.2:1. Never the old dark maroon (orange at 18 %).
+- **Reveal (typing):** the words are typed in, letter by letter, in time with the voice, like someone typing the line live.
+  - **Timing:** each word starts typing on its spoken start time from `02_audio/transcript.json` (within 2 frames) and is fully typed by its spoken end time. Its letters are spread evenly across that time, at 0.025 to 0.06 s per letter (a long word on a short sound types at the fast limit and may finish just after the word ends; never slower than 0.06 s per letter). Spaces and punctuation type with the word they follow.
+  - **Each letter:** appears with a 2-frame soft fade (opacity 0 to 1, no blur, no movement), so typing reads as smooth, never as single-frame pops.
+  - **Caret:** a thin rounded bar (3 px wide, 0.9 x the text height, `--c-orange`) sits just after the last typed letter and moves with it. It stays solid (no blinking) while typing, rests after the last word of the phrase for 0.4 s, then fades out over 0.3 s. Only one caret on screen. It wraps to the next line with the text.
+  - **Fixed layout:** the whole phrase is laid out from the start with untyped letters invisible (opacity 0, never removed), so the centred lines never shift or reflow while typing.
+  - **Key words:** a bold key word is typed in bold. The italic accent is typed in Playfair italic, with its gradient across the whole word (build: each letter takes its colour sampled along the gradient, because a background-clip gradient would show untyped letters). The highlight box grows left to right along with the letters as the key word types (its word is dark ink, invisible without the box). The selection frame and the highlight box draw on in 0.3 s right after the key word finishes typing.
+  - **Phrase change:** the previous phrase fades and blurs out over 0.3 s (opacity 1 to 0, blur 0 to 4 px) just before the first new letter types. Frame 0's hook phrase is fully typed on screen (thumbnail), with no caret.
+  - **Sound:** no sound per letter. The voice carries it; at most one soft click (serpforge-sound) where the picture itself shows typing in the visuals zone.
 
 ## 8. Watermark
 
-- File: `brand/logos/serpforge-logo-white.png`, 120 px wide (height follows the logo, ~28 px).
-- Colour white, opacity 18 % (allowed 15 to 20 %).
-- Fixed corner: **top-left, x = 120 px, y = 250 px** (below TikTok's top-left LIVE icon and tab bar, on the text column's left line).
-- On every frame, no animation, above all layers.
-- Never covers text, an icon or the focal point. Keep a 40 px clear zone around it (x 80 to 280, y 210 to 318). No layout puts content there; labels start at y 340 or lower. It never changes a scene's layout, timing or animation.
+- **What:** the text **serpforge.io** (not the logo).
+- **Where:** the watermark zone, centred on x = 540, vertical centre y = 1687 px.
+- **Type:** Outfit 600, 30 px, letter spacing +4 %, white at **30 % opacity** (low, subtle, still readable).
+- On every frame, no animation, above the background. Nothing else in its zone.
+- Note: on TikTok and Reels the app's own caption and username can sit over this area.
 
 ## 9. Do and do not
 
 1. **Do** have the hook fully on screen at frame 0 (it is the thumbnail): a bold line or a number. No intro, no logo first. The other elements build in around it.
-2. **Do** reveal text word by word in time with the voice, with one accented word per line.
+2. **Do** type the transcription in, letter by letter, in time with the voice (section 7 typing reveal): white, regular weight, 1 to 3 key words in bold or one key-word style (section 7).
 3. **Do** use real-looking UI (reports, dashboards, search results, chat) instead of abstract shapes.
 4. **Do** make every number move: count, grow a bar, draw a line.
 5. **Do** use colour for meaning: orange = action or attention, green = good, red = bad, amber = labels.
-6. **Do** give every transition a whoosh and every key reveal a sound.
-7. **Do** subtitle every spoken word in the subtitle band (section 7), and **don't** put any other element there.
-8. **Don't** use random circles, lines, blobs or "floating" decoration. The grid and glow are the only texture.
-9. **Don't** use more than 4 elements or more than one focal point on screen.
+6. **Do** keep motion smooth: one canvas, objects become objects, short soft moves, overlapping exits (section 4). **Don't** use full-frame wipes, whips or zooms.
+7. **Do** keep each thing in its zone: spoken words in the transcription zone, visuals on the colour drop, "serpforge.io" in the watermark zone. **Don't** add a bottom subtitle pill or a logo watermark.
+8. **Don't** use random circles, lines, blobs or "floating" decoration. The dot pattern and glow are the only texture.
+9. **Don't** repeat a visual format in two scenes in a row, or use more than 4 elements and one focal point on screen (section 10).
 10. **Don't** copy the reference videos' words, products, numbers, logos or colours. Take techniques only.
+
+## 10. Visual formats (variety in every video)
+
+Every scene picks one format from this library and names it in the visual script. Shown in our colours and fonts, never copied.
+
+| # | Format | What it looks like | Good for |
+|---|---|---|---|
+| F1 | **Hero object** | One large icon, logo mark or product tile with a soft glow, maybe a gentle tilt | A name, a reveal, "it's called…" |
+| F2 | **Stamp** | A big rotated value in a rounded outlined stamp ("FREE", "$0", "2x") that lands and settles | Price, a bold claim |
+| F3 | **Big counter** | A huge number counting up with a spark line, ring or bar growing with it | Stats, growth, results |
+| F4 | **Icon constellation** | Many small icons around a centre object or number, bursting out or gathering in | "10 ideas", many tools, abundance |
+| F5 | **Terminal / command** | A terminal or input box where a command types in, then a success pill | Setup, "one command", how it works |
+| F6 | **Real UI card** | A realistic card: search result, report, repo, chat answer, feed post | Proof, "this is what you get" |
+| F7 | **Chart** | Line or curve with points, bar chart, or a staircase drop, drawing on | Change over time, a problem, a win |
+| F8 | **Flow / network** | One node branching to several cards with connectors drawing out | "It connects to…", workflows, distribution |
+| F9 | **Before / after** | Two cards side by side with ≠ or ✗ / ✓ and a checklist of differences | Comparisons, "not this, but this" |
+| F10 | **Timeline / tracks** | Editor-style rows or a timeline filling one track per spoken word | Steps over time, building something |
+| F11 | **Grid of many** | A grid of small tiles filling cell by cell (e.g. 100 tiles) | Scale, "100 variants", volume |
+| F12 | **Steps with progress pills** | "01 · Setup" pills with the active one filled, plus a short checklist | Multi-step explainers |
+| F13 | **Phone / app mockup** | A phone or app frame with the product working inside | Mobile, social, real usage |
+| F14 | **People / audience** | Rows of person icons, one highlighted, or a crowd forming | Customers, buyers, "nobody" / "everybody" |
+| F15 | **Orbit / cycle** | Icons orbiting a centre number or logo on a circular path | Loops, ecosystems, "every step" |
+| F16 | **Receipt / pricing** | A receipt or price card with a total and a green check | Cost, value, "free" |
+| F17 | **Comment / CTA card** | A comment box or button with the keyword stamped big above it | The call to action |
+
+**Variety rules:**
+- Never the same format in two scenes in a row.
+- A video uses at least **5 different formats** (or one per scene when it has fewer than 5 scenes).
+- Change the composition too: centred hero, two side by side, a stack, a grid, a diagram. Not every scene is a single card.
+- Pick the format that shows the spoken idea literally (a number → F3, a comparison → F9, a cost → F16).

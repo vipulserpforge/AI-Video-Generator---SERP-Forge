@@ -1,0 +1,93 @@
+{
+  "voice": "videos/2026-11-test-run-v2/02_audio/final.mp3",
+  "duration": 16.24,
+  "cues": [
+    {
+      "t": 1.0,
+      "type": "click",
+      "note": "s01 question types in",
+      "level": -30
+    },
+    {
+      "t": 1.89,
+      "type": "pop",
+      "note": "s01 shortlist rows land"
+    },
+    {
+      "t": 4.0,
+      "type": "whoosh",
+      "note": "s01>s02 carry (window shrinks up)"
+    },
+    {
+      "t": 4.71,
+      "type": "pop",
+      "note": "s02 'Your brand' row"
+    },
+    {
+      "t": 5.24,
+      "type": "break",
+      "note": "test: NOT LISTED stamp breaks"
+    },
+    {
+      "t": 5.95,
+      "type": "whoosh",
+      "note": "s02>s03 soft crossfade"
+    },
+    {
+      "t": 6.14,
+      "type": "shutter",
+      "note": "s03 real serpforge.io page shown"
+    },
+    {
+      "t": 8.18,
+      "type": "light",
+      "note": "test: Found lights up",
+      "level": -30
+    },
+    {
+      "t": 8.6,
+      "type": "whoosh",
+      "note": "s03>s04 carry into hub"
+    },
+    {
+      "t": 8.85,
+      "type": "pop",
+      "note": "s04 Google window lands"
+    },
+    {
+      "t": 9.05,
+      "type": "popin",
+      "note": "test: #1 badge pops in"
+    },
+    {
+      "t": 10.05,
+      "type": "pop",
+      "note": "s04 AI answers row"
+    },
+    {
+      "t": 11.35,
+      "type": "whoosh",
+      "note": "s04>s05 soft crossfade"
+    },
+    {
+      "t": 12.52,
+      "type": "riser",
+      "note": "s05 line draws into 'visibility'"
+    },
+    {
+      "t": 13.55,
+      "type": "whoosh",
+      "note": "s05>s06 soft crossfade"
+    },
+    {
+      "t": 14.12,
+      "type": "subdrop",
+      "note": "s06 serpforge.io lands"
+    },
+    {
+      "t": 14.6,
+      "type": "click",
+      "note": "s06 cursor clicks the serpforge.io pill"
+    }
+  ]
+}

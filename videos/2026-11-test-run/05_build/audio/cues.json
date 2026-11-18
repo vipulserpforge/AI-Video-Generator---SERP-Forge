@@ -1,0 +1,239 @@
+{
+ "duration": 16.77,
+ "music": {
+  "file": "library/music/mixkit/mixkit-1167_close-up.mp3",
+  "start_in_track": 21.27,
+  "gap_lufs": -21,
+  "duck_db": -9,
+  "duck_db_s06": -5,
+  "stereo": true
+ },
+ "voice_lufs": -16,
+ "master_lufs": -14,
+ "cues": [
+  {
+   "t": 1.0,
+   "file": "library/sfx/mixkit/mixkit-1387_typing_fast-keyboard.wav",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s01 question types in",
+   "frame": 30
+  },
+  {
+   "t": 1.89,
+   "file": "library/sfx/mixkit/mixkit-2357_pop_bubble-alert.wav",
+   "level_db": -22,
+   "align": "onset",
+   "note": "s01 row 1 lands",
+   "frame": 57
+  },
+  {
+   "t": 1.95,
+   "file": "library/sfx/mixkit/mixkit-2356_pop_dry-notification.wav",
+   "level_db": -26,
+   "align": "onset",
+   "note": "s01 row 2 lands",
+   "frame": 58
+  },
+  {
+   "t": 2.01,
+   "file": "library/sfx/mixkit/mixkit-2356_pop_dry-notification.wav",
+   "level_db": -26,
+   "align": "onset",
+   "note": "s01 row 3 lands",
+   "frame": 60
+  },
+  {
+   "t": 3.8,
+   "file": "library/sfx/mixkit/mixkit-1489_whoosh_air.wav",
+   "level_db": -18,
+   "align": "peak",
+   "note": "s01>s02 blur swap",
+   "frame": 114
+  },
+  {
+   "t": 4.71,
+   "file": "library/sfx/mixkit/mixkit-1113_click_mouse-close.wav",
+   "level_db": -22,
+   "align": "onset",
+   "note": "s02 empty slot appears",
+   "frame": 141
+  },
+  {
+   "t": 5.24,
+   "file": "library/sfx/mixkit/mixkit-2299_hit_short-bass.wav",
+   "level_db": -16,
+   "align": "onset",
+   "note": "s02 'on' / Not listed",
+   "frame": 157
+  },
+  {
+   "t": 5.95,
+   "file": "library/sfx/mixkit/mixkit-1492_whoosh_cinematic-fast.wav",
+   "level_db": -18,
+   "align": "peak",
+   "note": "s02>s03 tile wipe",
+   "frame": 178
+  },
+  {
+   "t": 6.14,
+   "file": "uisfx/soft/achievement.mp3",
+   "level_db": -18,
+   "align": "onset",
+   "note": "s03 logo on 'SERP'",
+   "frame": 184
+  },
+  {
+   "t": 7.6,
+   "file": "library/sfx/mixkit/mixkit-2356_pop_dry-notification.wav",
+   "level_db": -22,
+   "align": "onset",
+   "note": "s03 search card",
+   "frame": 228
+  },
+  {
+   "t": 8.18,
+   "file": "library/sfx/mixkit/mixkit-951_ding_positive-notification.wav",
+   "level_db": -18,
+   "align": "onset",
+   "note": "s03 'found'",
+   "frame": 245
+  },
+  {
+   "t": 8.45,
+   "file": "library/sfx/mixkit/mixkit-1491_whoosh_arrow.wav",
+   "level_db": -18,
+   "align": "peak",
+   "note": "s03>s04 whip",
+   "frame": 253
+  },
+  {
+   "t": 8.85,
+   "file": "library/sfx/mixkit/mixkit-2356_pop_dry-notification.wav",
+   "level_db": -22,
+   "align": "onset",
+   "note": "s04 card A on 'Google'",
+   "frame": 266
+  },
+  {
+   "t": 9.05,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -24,
+   "align": "onset",
+   "note": "s04 #1 tile",
+   "frame": 272
+  },
+  {
+   "t": 9.52,
+   "file": "library/sfx/mixkit/mixkit-2299_hit_short-bass.wav",
+   "level_db": -16,
+   "align": "onset",
+   "note": "s04 'and'",
+   "frame": 286
+  },
+  {
+   "t": 10.05,
+   "file": "library/sfx/mixkit/mixkit-2357_pop_bubble-alert.wav",
+   "level_db": -22,
+   "align": "onset",
+   "note": "s04 card B on 'AI'",
+   "frame": 302
+  },
+  {
+   "t": 10.26,
+   "file": "library/sfx/mixkit/mixkit-2870_ding_correct-answer.wav",
+   "level_db": -18,
+   "align": "onset",
+   "note": "s04 'Cited' chip",
+   "frame": 308
+  },
+  {
+   "t": 11.35,
+   "file": "library/sfx/mixkit/mixkit-1492_whoosh_cinematic-fast.wav",
+   "level_db": -18,
+   "align": "peak",
+   "note": "s04>s05 zoom-through",
+   "frame": 340
+  },
+  {
+   "t": 11.77,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 1",
+   "frame": 353
+  },
+  {
+   "t": 11.89,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 2",
+   "frame": 357
+  },
+  {
+   "t": 12.01,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 3",
+   "frame": 360
+  },
+  {
+   "t": 12.13,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 4",
+   "frame": 364
+  },
+  {
+   "t": 12.25,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 5",
+   "frame": 368
+  },
+  {
+   "t": 12.37,
+   "file": "uisfx/studio/hover.mp3",
+   "level_db": -28,
+   "align": "onset",
+   "note": "s05 bar tick 6",
+   "frame": 371
+  },
+  {
+   "t": 12.52,
+   "file": "library/sfx/mixkit/mixkit-951_ding_positive-notification.wav",
+   "level_db": -18,
+   "align": "onset",
+   "note": "s05 green bar on 'visibility'",
+   "frame": 376
+  },
+  {
+   "t": 13.55,
+   "file": "library/sfx/mixkit/mixkit-1489_whoosh_air.wav",
+   "level_db": -18,
+   "align": "peak",
+   "note": "s05>s06 blur swap",
+   "frame": 406
+  },
+  {
+   "t": 13.8,
+   "file": "uisfx/soft/achievement.mp3",
+   "level_db": -16,
+   "align": "onset",
+   "note": "s06 logo outro",
+   "frame": 414
+  },
+  {
+   "t": 14.12,
+   "file": "library/sfx/mixkit/mixkit-1113_click_mouse-close.wav",
+   "level_db": -20,
+   "align": "onset",
+   "note": "s06 URL pill",
+   "frame": 424
+  }
+ ]
+}

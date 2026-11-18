@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/tokens.css" />
+    <link rel="stylesheet" href="assets/shared.css" />
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--c-bg); font-family: "Outfit", sans-serif; }
+      .font-preload { font-family: "Playfair Display", serif; font-style: italic; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      #wipe { z-index: 80; }
+    </style>
+  </head>
+  <body>
+    <!-- Test run, 1080 x 1920, 30 fps, 16.77 s. Visual script: 03_visual-script/visual-script.md (approved). -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.77" data-width="1080" data-height="1920">
+      <!-- scenes (lane 0, back to back) -->
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="3.8" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="3.8" data-duration="2.15" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="5.95" data-duration="2.5" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/s04.html" data-start="8.45" data-duration="2.9" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/s05.html" data-start="11.35" data-duration="2.2" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/s06.html" data-start="13.55" data-duration="3.22" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+      <!-- signature tile wipe s02 -> s03 (lane 1) -->
+      <div id="wipe" data-composition-id="wipe" data-composition-src="compositions/wipe.html" data-start="5.7" data-duration="0.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+      <!-- soundtrack (lane 4): 02_audio/final.mp3 is the only voice, mixed with music + SFX by 05_build/audio/mix.py -->
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="16.77" data-track-index="4"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

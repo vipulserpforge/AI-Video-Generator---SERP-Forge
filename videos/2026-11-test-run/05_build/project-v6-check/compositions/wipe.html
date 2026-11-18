@@ -1,0 +1,32 @@
+<template>
+  <style>
+    #wipe { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    #wipe .wt { position: absolute; width: 132px; height: 132px; border-radius: 26px; transform: scale(0); }
+  </style>
+  <div id="wipe" data-composition-id="wipe" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="wipe-grid"></div>
+  </div>
+  <script>
+    (() => {
+      // Signature tile wipe: 120 px rounded squares in the logo's teal, mint and orange sweep
+      // diagonally bottom-left to top-right in 0.5 s. Layout is fixed (no randomness).
+      const COLS = 9, ROWS = 16, S = 120, C = ["#008181", "#ABDCD6", "#F8981D"];
+      const grid = document.getElementById("wipe-grid");
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        const d = document.createElement("div");
+        d.className = "wt";
+        d.style.left = (c * S - 6) + "px"; d.style.top = (r * S - 6) + "px";
+        d.style.background = C[(r + c * 2) % 3];
+        d.dataset.k = (c + (ROWS - 1 - r)) / (COLS + ROWS - 2);
+        grid.appendChild(d);
+      }
+      const tl = gsap.timeline({ paused: true });
+      grid.querySelectorAll(".wt").forEach((d) => {
+        const k = parseFloat(d.dataset.k);
+        tl.fromTo(d, { scale: 0 }, { scale: 1.02, duration: 0.16, ease: "power2.inOut" }, k * 0.18);
+        tl.to(d, { scale: 0, duration: 0.15, ease: "power3.in" }, 0.2 + k * 0.15);
+      });
+      window.__timelines["wipe"] = tl;
+    })();
+  </script>
+</template>

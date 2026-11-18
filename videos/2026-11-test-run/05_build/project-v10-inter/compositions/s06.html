@@ -1,0 +1,41 @@
+<template>
+  <style>
+    #s06 .logo { position: absolute; left: 335px; top: 860px; width: 410px; transform-origin: center center; }
+    #s06 .tag { position: absolute; left: var(--col-left); width: var(--col-width); top: 990px; text-align: center; font-size: 64px; font-weight: var(--fw-bold); line-height: 1.05; letter-spacing: var(--ls-title); }
+    #s06 .tag .italic { font-size: 70px; }
+    #s06 .cta { position: absolute; left: 0; width: 1080px; top: 1170px; display: flex; justify-content: center; transform-origin: center center; }
+    #s06 .btn { display: inline-flex; align-items: center; gap: 18px; padding: 26px 26px 26px 48px; border-radius: var(--radius-pill); background: var(--c-orange); color: var(--c-ink-on-accent); font-size: 44px; font-weight: var(--fw-semibold); box-shadow: var(--shadow-cta); white-space: nowrap; }
+    #s06 .arrow { width: 64px; height: 64px; border-radius: 50%; background: var(--c-bg); display: grid; place-items: center; }
+  </style>
+  <div id="s06" class="scene-root" data-composition-id="s06" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div><div class="glow" style="top: 260px" data-layout-allow-overflow></div>
+    <div class="glow-warm" id="s06-warm" data-layout-allow-overflow></div>
+    <div class="stage" id="s06-stage">
+      <div class="vis" style="--vc: 1073px; --vs: 1.3"><img class="logo" id="s06-logo" src="assets/logos/serpforge-logo-white.png" alt="SERP Forge" /></div>
+      <h2 class="title" id="s06-url"><span class="italic">serpforge.io</span></h2>
+      <div class="vis" style="--vc: 1073px; --vs: 1.3">
+      <div class="tag" id="s06-line">Get found by<br /><span class="italic">AI and Google.</span></div>
+      <div class="cta" id="s06-cta">
+        <div class="btn">serpforge.io
+          <span class="arrow" id="s06-arrow"><img src="assets/icons/cursor-click.svg" width="38" height="38" alt="" /></span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", BACK = "back.out(1.4)";
+      // local time = film time - 13.55. Blur swap in, then the logo outro holds still to the end.
+      tl.fromTo("#s06-stage", { filter: "blur(8px)", opacity: 0 }, { filter: "blur(0px)", opacity: 1, duration: 0.25, ease: OUT }, 0);
+      tl.fromTo("#s06-logo", { scale: 0.9, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 0.05);
+      tl.fromTo("#s06-line", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: OUT }, 0.25);
+      tl.fromTo("#s06-url", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: OUT }, 0.57);
+      tl.fromTo("#s06-cta", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: BACK }, 0.12);
+      tl.fromTo("#s06-arrow", { x: -12, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: OUT }, 0.85);
+      tl.fromTo("#s06-warm", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: OUT }, 0.57);
+      window.__timelines["s06"] = tl;
+    })();
+  </script>
+</template>

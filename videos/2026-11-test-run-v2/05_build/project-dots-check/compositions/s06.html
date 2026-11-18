@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #s06 .vz, #s06 .vz * { font-family: "Outfit", sans-serif; }
+    #s06 .vz { gap: 64px; }
+    #s06 .logo { width: 410px; height: 96px; }
+    #s06 .tag { text-align: center; font-size: 84px; font-weight: 700; line-height: 1.06; letter-spacing: -0.02em; }
+    #s06 .vz .tag .italic { font-family: "Playfair Display", serif; font-size: 92px; font-weight: 500; }
+    #s06 .btn { display: inline-flex; align-items: center; gap: 22px; padding: 30px 30px 30px 56px; border-radius: 999px; background: var(--c-orange); color: var(--c-ink-on-accent); font-size: 56px; font-weight: 600; box-shadow: var(--shadow-cta); white-space: nowrap; }
+    #s06 .arrow { width: 78px; height: 78px; border-radius: 50%; background: var(--c-bg); display: grid; place-items: center; }
+    #s06 .arrow img { width: 46px; height: 46px; }
+    #s06 .warm { position: absolute; left: 90px; top: 1060px; width: 900px; height: 560px; background: var(--g-glow-orange); }
+    #s06 .tx .italic { font-size: 84px; }
+  </style>
+  <div id="s06" class="scene-root" data-composition-id="s06" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <div class="warm" id="s06-warm" data-layout-allow-overflow></div>
+    <h1 class="tx"><span class="italic" id="s06-url">serpforge.io</span></h1>
+    <div class="vz" id="s06-vz">
+      <img class="logo" id="s06-logo" src="assets/logos/serpforge-logo-white.png" alt="SERP Forge" />
+      <div class="tag" id="s06-line">Get found by<br /><span class="italic">AI and Google.</span></div>
+      <div id="s06-cta"><div class="btn">serpforge.io<span class="arrow" id="s06-arrow"><img src="assets/icons/cursor-click.svg" alt="" /></span></div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out";
+      tl.fromTo("#s06-logo", { y: 24, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 0.05);
+      tl.fromTo("#s06-line", { y: 24, opacity: 0, filter: "blur(8px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 0.25);
+      tl.fromTo("#s06-url", { opacity: 0, y: 10, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: SOFT }, 0.57);
+      tl.fromTo("#s06-cta", { scale: 0.92, opacity: 0, filter: "blur(6px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 0.45);
+      tl.fromTo("#s06-arrow", { x: -12, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: SOFT }, 0.85);
+      tl.fromTo("#s06-warm", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: SOFT }, 0.57);
+      window.__timelines["s06"] = tl;
+    })();
+  </script>
+</template>

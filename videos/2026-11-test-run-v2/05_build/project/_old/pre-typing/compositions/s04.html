@@ -1,0 +1,71 @@
+<template>
+  <style>
+    #s04 .layer { position: absolute; left: 80px; top: 585px; width: 920px; height: 925px; }
+    #s04 .layer, #s04 .layer * { font-family: "Inter", sans-serif; letter-spacing: -0.01em; }
+    #s04 .wcard { position: absolute; left: 30px; width: 860px; }
+    #s04 .gwin { top: 10px; padding-bottom: 30px; }
+    #s04 .gwin .hrow { gap: 24px; }
+    #s04 .gwin .nm { font-size: 42px; font-weight: 600; }
+    #s04 .gwin .bar { flex: 1; height: 14px; border-radius: 7px; background: rgba(171, 220, 214, .10); max-width: 170px; }
+    #s04 .rk { margin-left: auto; font-size: 34px; font-weight: 700; color: #FFFFFF; padding: 10px 22px 10px 14px; border-color: rgba(248, 100, 10, .6); background: rgba(248, 100, 10, .12); }
+    #s04 .rk img { width: 40px; height: 40px; }
+    #s04 .hub { position: absolute; left: 160px; width: 600px; top: 318px; height: 150px; display: flex; align-items: center; justify-content: center; gap: 22px;
+      background: var(--c-surface); border: 1.5px solid rgba(171, 220, 214, .35); border-radius: 30px; box-shadow: 0 0 60px rgba(31, 148, 146, .25), 0 24px 60px rgba(0, 0, 0, .45); }
+    #s04 .hub .nm { font-size: 42px; font-weight: 600; }
+    #s04 .hub .chip { font-size: 28px; padding: 8px 16px; }
+    #s04 .hub .chip img { width: 28px; height: 28px; }
+    #s04 .conn { position: absolute; left: 457px; width: 6px; border-radius: 3px; background: rgba(171, 220, 214, .4); }
+    #s04 .c1 { top: 226px; height: 92px; transform-origin: 50% 100%; }
+    #s04 .c2 { top: 468px; height: 92px; transform-origin: 50% 0%; }
+    #s04 .awin { top: 560px; padding-bottom: 30px; }
+    #s04 .tiles { display: flex; justify-content: space-between; padding: 0 12px; }
+    #s04 .ai { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    #s04 .ai .ltile { width: 120px; height: 120px; border-radius: 28px; }
+    #s04 .ai .ltile img { width: 66px; height: 66px; }
+    #s04 .cited { display: flex; align-items: center; gap: 8px; font-size: 26px; font-weight: 500; color: var(--c-green); }
+    #s04 .cited img { width: 28px; height: 28px; }
+  </style>
+  <div id="s04" class="scene-root" data-composition-id="s04" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <h1 class="tx" id="s04-tx"><span><span class="wd" data-t="0.01">On</span> <span class="wd" data-t="0.15">Google</span> <span class="wd hl" data-t="0.82"><span class="box" id="s04-box"></span><span class="txt">and</span></span><br /><span class="wd" data-t="1.27">in</span> <span class="wd" data-t="1.35">AI</span> <span class="wd" data-t="1.56">answers.</span></span></h1>
+    <div class="layer" id="s04-layer">
+      <div class="wcard gwin" id="s04-g" data-title="google search">
+        <div class="hrow"><div class="ltile white"><img src="assets/logos/google.svg" alt="Google" /></div><span class="nm">Your brand</span><div class="bar"></div>
+          <span class="chip rk" id="s04-rk"><img src="assets/icons/ranking.svg" alt="" />#1</span></div>
+      </div>
+      <div class="conn c1" id="s04-c1"></div>
+      <div class="hub" id="s04-hub"><div class="ltile"><img src="assets/icons/browser.svg" alt="" /></div><span class="nm">Your brand</span>
+        <span class="chip green"><img src="assets/icons/seal-check.svg" alt="" />Found</span></div>
+      <div class="conn c2" id="s04-c2"></div>
+      <div class="wcard awin" id="s04-a" data-title="ai answers">
+        <div class="tiles">
+          <div class="ai"><div class="ltile"><img src="assets/logos/chatgpt.svg" alt="ChatGPT" /></div><span class="cited"><img src="assets/icons/check-circle.svg" alt="" />cited</span></div>
+          <div class="ai"><div class="ltile"><img src="assets/logos/gemini-alt.svg" alt="Gemini" /></div><span class="cited"><img src="assets/icons/check-circle.svg" alt="" />cited</span></div>
+          <div class="ai"><div class="ltile"><img src="assets/logos/perplexity.svg" alt="Perplexity" /></div><span class="cited"><img src="assets/icons/check-circle.svg" alt="" />cited</span></div>
+          <div class="ai"><div class="ltile"><img src="assets/logos/claude.svg" alt="Claude" /></div><span class="cited"><img src="assets/icons/check-circle.svg" alt="" />cited</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out", INOUT = "power2.inOut", BACK = "back.out(1.4)";
+      tl.fromTo("#s04-hub", { scale: 0.6, opacity: 0, filter: "blur(6px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: INOUT }, 0);
+      tl.fromTo("#s04-c1", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: SOFT }, 0.05);
+      tl.fromTo("#s04-g", { y: 30, scale: 0.95, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: OUT }, 0.0);
+      tl.fromTo("#s04-rk", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: BACK }, 0.35);
+      document.querySelectorAll("#s04 .tx [data-t]").forEach(w =>
+        tl.fromTo(w, { opacity: 0, y: 10, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: SOFT }, +w.dataset.t));
+      tl.fromTo("#s04-box", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: SOFT }, 0.82);
+      tl.fromTo("#s04-c2", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: SOFT }, 1.0);
+      tl.fromTo("#s04-a", { y: 30, scale: 0.95, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: OUT }, 1.2);
+      document.querySelectorAll("#s04 .ai .ltile").forEach((el, i) =>
+        tl.fromTo(el, { scale: 0.92, opacity: 0, filter: "blur(6px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: SOFT }, 1.35 + i * 0.07));
+      document.querySelectorAll("#s04 .cited").forEach((el, i) =>
+        tl.fromTo(el, { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: SOFT }, 1.56 + i * 0.06));
+      tl.to(["#s04-layer", "#s04-tx"], { opacity: 0, filter: "blur(6px)", scale: 0.97, duration: 0.25, ease: "power2.in" }, 2.4);
+      window.__timelines["s04"] = tl;
+    })();
+  </script>
+</template>

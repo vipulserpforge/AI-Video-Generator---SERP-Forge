@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test run storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg: #0A0E0D; --surface: #121A19; --border: #2C3534; --text: #FFFFFF; --text2: #B2B4B4; --muted: #77918C; --orange: #F8640A; --amber: #E2A63D; --teal: #1F9492; --mint: #ABDCD6; --peach: #FCBB82; --red: #F8534D; --green: #31CD88; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Outfit", sans-serif; font-size: 15px; line-height: 1.45; padding: 40px 16px 64px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  header { margin-bottom: 28px; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); }
+  h1 { font-size: 40px; font-weight: 700; letter-spacing: -.02em; line-height: 1.05; margin: 6px 0 10px; }
+  h1 em { font-family: "Playfair Display", serif; font-weight: 500; background: linear-gradient(90deg, #C2E4DC, #FCBB82); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .meta { color: var(--text2); display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+  .meta b { color: var(--text); font-weight: 600; }
+  .timeline { display: flex; height: 34px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin: 22px 0 30px; }
+  .timeline div { display: grid; place-items: center; font-size: 12px; font-weight: 600; color: var(--bg); border-right: 1px solid var(--bg); }
+  .card { display: grid; grid-template-columns: 270px 1fr; gap: 26px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 24px; padding: 22px; margin-bottom: 22px; break-inside: avoid; page-break-inside: avoid; }
+  .still { width: 270px; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: #000; }
+  .still img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .still-cap { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 12px; }
+  .sid { font-size: 24px; font-weight: 700; letter-spacing: -.01em; }
+  .time { font-size: 14px; font-weight: 600; color: var(--bg); background: var(--mint); padding: 3px 10px; border-radius: 999px; }
+  .dur { font-size: 13px; color: var(--muted); }
+  .say { font-size: 19px; font-weight: 500; margin-bottom: 14px; }
+  .say::before { content: "“"; color: var(--muted); } .say::after { content: "”"; color: var(--muted); }
+  dl { display: grid; grid-template-columns: 128px 1fr; gap: 8px 16px; }
+  dt { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); padding-top: 2px; }
+  dd { color: var(--text2); }
+  dd ul { padding-left: 16px; } dd li { margin: 2px 0; }
+  .t { color: var(--mint); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .sub { display: inline-block; background: #0E1514; border: 1px solid var(--border); border-radius: 10px; padding: 2px 10px; margin: 2px 6px 2px 0; color: var(--text); font-weight: 500; }
+  .sub b { background: var(--orange); color: var(--bg); border-radius: 5px; padding: 0 5px; font-weight: 600; }
+  .flag { margin-top: 14px; border: 1.5px solid rgba(226,166,61,.55); background: rgba(226,166,61,.08); border-radius: 14px; padding: 10px 14px; color: var(--text); font-size: 14px; }
+  .flag b { color: var(--amber); }
+  .notes { background: var(--surface); border: 1.5px solid var(--border); border-radius: 24px; padding: 22px 26px; margin-top: 8px; }
+  .notes h2 { font-size: 20px; margin-bottom: 10px; }
+  .notes ul { padding-left: 18px; color: var(--text2); } .notes li { margin: 5px 0; }
+  @media (max-width: 720px) { .card { grid-template-columns: 1fr; } .still { width: 100%; max-width: 300px; } dl { grid-template-columns: 1fr; } dt { padding-top: 6px; } }
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: #0A0E0D; }
+    body { padding: 12mm; font-size: 11.5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card { grid-template-columns: 200px 1fr; gap: 18px; padding: 16px; margin-bottom: 0; break-after: page; page-break-after: always; }
+    .still { width: 200px; }
+    h1 { font-size: 30px; } .say { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">SERP Forge · Storyboard · Approval 3</div>
+    <h1>Test run, <em>16.77 s</em></h1>
+    <div class="meta">
+      <span><b>Format</b> 1080 × 1920, 9:16, 30 fps, MP4</span>
+      <span><b>Voice</b> 02_audio/final.mp3 (approved)</span>
+      <span><b>Timings</b> 02_audio/transcript.json</span>
+      <span><b>Style</b> brand/STYLE-SHEET.md v2</span>
+    </div>
+  </header>
+
+  <div class="timeline" aria-label="Scene timeline">
+    <div style="flex: 3.8; background: #ABDCD6">s01</div>
+    <div style="flex: 2.15; background: #C7D8C8">s02</div>
+    <div style="flex: 2.5; background: #E2C9A7">s03</div>
+    <div style="flex: 2.9; background: #F2BE8D">s04</div>
+    <div style="flex: 2.2; background: #F8A35E">s05</div>
+    <div style="flex: 3.22; background: #F8640A">s06</div>
+  </div>
+
+  <!-- s01 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s01.png" alt="s01 still" /></div><div class="still-cap">Still at 0:02.55</div></div>
+    <div>
+      <div class="head"><span class="sid">s01-hook</span><span class="time">0:00.0 to 0:03.8</span><span class="dur">3.8 s</span></div>
+      <div class="say">Your buyers ask AI for a shortlist.</div>
+      <dl>
+        <dt>On screen</dt><dd>Label “AI SEARCH”. Title “Your buyers ask / AI for a / <i>shortlist.</i>” (on screen at frame 0). AI chat card with the question “Best SEO agency for SaaS?” and 3 shortlist rows.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>Title and label still from <span class="t">0:00.0</span> (thumbnail).</li>
+          <li>Chat card rises in, landing on “ask” <span class="t">0:01.0</span>. Question types in <span class="t">0:01.0–1.5</span>.</li>
+          <li>Rows 1–3 toss in with overshoot, landing on “shortlist” <span class="t">0:01.89 / 1.95 / 2.01</span>. Shine across “shortlist.” <span class="t">0:01.9</span>.</li>
+          <li>Stage drifts up 16 px over the scene.</li></ul></dd>
+        <dt>Transition</dt><dd>Blur swap at <span class="t">0:03.8</span>. Only the title swaps, and the chat card carries into s02.</dd>
+        <dt>Sound</dt><dd>Typing bed <span class="t">0:01.0</span> −28 dB · pops <span class="t">0:01.89</span> −22 dB, <span class="t">1.95 / 2.01</span> −26 dB · whoosh <span class="t">0:03.7</span> −18 dB · music bed starts −30 LUFS</dd>
+        <dt>Subtitles</dt><dd><span class="sub">Your buyers ask AI</span><span class="sub">for a <b>shortlist.</b></span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- s02 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s02.png" alt="s02 still" /></div><div class="still-cap">Still at 0:05.48</div></div>
+    <div>
+      <div class="head"><span class="sid">s02-question</span><span class="time">0:03.8 to 0:05.95</span><span class="dur">2.15 s</span></div>
+      <div class="say">Is your brand on it?</div>
+      <dl>
+        <dt>On screen</dt><dd>Title “Is your brand / <i>on it?</i>” with an orange box on “on”. The same chat card: rows dim, and a 4th dashed slot “Your brand” appears with a red “Not listed” chip.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>Words blur in: “Is” <span class="t">0:04.24</span>, “your” <span class="t">4.29</span>, “brand” <span class="t">4.71</span>, “on it?” <span class="t">5.24</span>. Orange box wipes in on “on” <span class="t">0:05.24</span>.</li>
+          <li>Rows 1–3 dim to 55 % at <span class="t">0:04.7</span>. The empty slot rises in on “brand” <span class="t">0:04.71</span>.</li>
+          <li>“Not listed” pops in with overshoot on “on” <span class="t">0:05.24</span>. Faint red glow.</li></ul></dd>
+        <dt>Transition</dt><dd>Tile wipe (signature) <span class="t">0:05.70–6.20</span>: rounded squares in logo teal, mint and orange sweep from bottom-left to top-right.</dd>
+        <dt>Sound</dt><dd>UI click <span class="t">0:04.71</span> −22 dB · soft hit <span class="t">0:05.24</span> −16 dB · whoosh <span class="t">0:05.70</span> −18 dB · music +3 dB in the gap</dd>
+        <dt>Subtitles</dt><dd><span class="sub">Is your brand</span><span class="sub"><b>on</b> it?</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- s03 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s03.png" alt="s03 still" /></div><div class="still-cap">Still at 0:08.12</div></div>
+    <div>
+      <div class="head"><span class="sid">s03-serp-forge</span><span class="time">0:05.95 to 0:08.45</span><span class="dur">2.5 s</span></div>
+      <div class="say">SERP Forge gets SaaS brands found</div>
+      <dl>
+        <dt>On screen</dt><dd>The white SERP Forge logo (native size). Title “gets SaaS / brands <i>found.</i>” Search card: “SEARCH VISIBILITY”, a “Your SaaS brand · yourbrand.com” result and a green “Found” chip.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>Logo blurs in under the tile wipe, landing on “SERP” <span class="t">0:06.14</span>.</li>
+          <li>Words mask-reveal: “gets” <span class="t">0:06.88</span>, “SaaS” <span class="t">7.23</span>, “brands” <span class="t">7.60</span>, “found.” <span class="t">8.18</span>.</li>
+          <li>Search card rises in, landing on “SaaS” <span class="t">0:07.60</span>. The “Found” chip and green glow appear on “found” <span class="t">0:08.18</span>.</li></ul></dd>
+        <dt>Transition</dt><dd>Whip up, 0.15 s out / 0.15 s in, at <span class="t">0:08.45</span>.</dd>
+        <dt>Sound</dt><dd>Logo chime <span class="t">0:06.14</span> −18 dB · card pop <span class="t">0:07.60</span> −22 dB · ding <span class="t">0:08.18</span> −18 dB · whoosh <span class="t">0:08.35</span> −18 dB</dd>
+        <dt>Subtitles</dt><dd><span class="sub">SERP Forge gets</span><span class="sub">SaaS brands found</span></dd>
+      </dl>
+      <div class="flag"><b>Note:</b> “found” is spoken at 0:08.18, so the “Found” chip is on screen for only 0.26 s before the whip. HyperFrames flags it as too short to read. Approve as is, or have the chip land earlier on “brands” (0:07.60) so it holds 0.85 s.</div>
+    </div>
+  </section>
+
+  <!-- s04 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s04.png" alt="s04 still" /></div><div class="still-cap">Still at 0:10.90</div></div>
+    <div>
+      <div class="head"><span class="sid">s04-google-ai</span><span class="time">0:08.45 to 0:11.35</span><span class="dur">2.9 s</span></div>
+      <div class="say">on Google and in AI answers.</div>
+      <dl>
+        <dt>On screen</dt><dd>Title “On Google / <b style="color:#F8640A">and</b> in AI / <i>answers.</i>” Card A “GOOGLE SEARCH”: an orange “#1” tile and “Your brand”. Card B “AI ANSWER”: 2 text lines and a teal “Cited: Your brand” chip.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>Whip in from below. Words blur in: “On” <span class="t">0:08.71</span>, “Google” <span class="t">8.85</span>, “and” <span class="t">9.52</span>, “in AI” <span class="t">9.97</span>, “answers.” <span class="t">10.26</span>.</li>
+          <li>Card A lands on “Google” <span class="t">0:08.85</span>. “#1” pops <span class="t">0:09.05</span>. The orange box wipes in on “and” <span class="t">0:09.52</span>.</li>
+          <li>Card B lands on “AI” <span class="t">0:10.05</span>, its lines draw, and “Cited” pops on “answers” <span class="t">0:10.26</span>. Card A dims to 70 %.</li></ul></dd>
+        <dt>Transition</dt><dd>Card zoom-through <span class="t">0:11.10–11.35</span>: card B grows past the frame and becomes s05's ground.</dd>
+        <dt>Sound</dt><dd>Pop <span class="t">0:08.85</span> −22 dB · tick <span class="t">0:09.05</span> −24 dB · soft hit <span class="t">0:09.52</span> −16 dB · pop <span class="t">0:10.05</span> −22 dB · ding <span class="t">0:10.26</span> −18 dB · whoosh <span class="t">0:11.10</span> −18 dB</dd>
+        <dt>Subtitles</dt><dd><span class="sub">on Google <b>and</b></span><span class="sub">in AI answers.</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- s05 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s05.png" alt="s05 still" /></div><div class="still-cap">Still at 0:12.88</div></div>
+    <div>
+      <div class="head"><span class="sid">s05-build</span><span class="time">0:11.35 to 0:13.55</span><span class="dur">2.2 s</span></div>
+      <div class="say">Let's build your visibility.</div>
+      <dl>
+        <dt>On screen</dt><dd>Title “Let's build your / <i>visibility.</i>” Card “AI + SEARCH VISIBILITY” with 9 bars (the last 2 green), a mint trend line and “▲ growing”. No numbers.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>The zoomed card's fill fades into the scene <span class="t">0:11.35–11.7</span>, and the card settles from 104 % to 100 %.</li>
+          <li>Words mask-reveal: “Let's” <span class="t">0:11.52</span>, “build” <span class="t">11.77</span>, “your” <span class="t">12.18</span>, “visibility.” <span class="t">12.52</span>.</li>
+          <li>Bars grow from “build” <span class="t">0:11.77</span>, and the tall green bar lands on “visibility” <span class="t">0:12.52</span>. The trend line draws <span class="t">0:12.0–12.7</span>. “▲ growing” appears <span class="t">0:12.6</span>.</li></ul></dd>
+        <dt>Transition</dt><dd>Blur swap at <span class="t">0:13.55</span>.</dd>
+        <dt>Sound</dt><dd>Tick roll <span class="t">0:11.77</span> −28 dB · ding <span class="t">0:12.52</span> −18 dB · whoosh <span class="t">0:13.45</span> −18 dB · music +3 dB in the gap</dd>
+        <dt>Subtitles</dt><dd><span class="sub">Let's build your</span><span class="sub"><b>visibility.</b></span> <span style="color:var(--muted)">(split into 2 groups: the whole line is too wide for the 660 px subtitle pill)</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- s06 -->
+  <section class="card">
+    <div><div class="still"><img src="stills/s06.png" alt="s06 still" /></div><div class="still-cap">Still at 0:15.50</div></div>
+    <div>
+      <div class="head"><span class="sid">s06-outro</span><span class="time">0:13.55 to 0:16.77</span><span class="dur">3.22 s</span></div>
+      <div class="say">serpforge.io</div>
+      <dl>
+        <dt>On screen</dt><dd>White logo, the line “Get found by / <i>AI and Google.</i>” (on-screen only, not spoken), and an orange “serpforge.io” pill with an arrow badge. Warm glow under the pill.</dd>
+        <dt>Animation</dt><dd><ul>
+          <li>The stage blurs in <span class="t">0:13.55</span>. Logo <span class="t">0:13.6</span>, line <span class="t">0:13.8</span>.</li>
+          <li>The URL pill pops in with overshoot, landing on “serpforge.io” <span class="t">0:14.12</span>. The arrow slides in <span class="t">0:14.4</span>.</li>
+          <li>Holds dead still <span class="t">0:14.6–16.77</span> (2.2 s). No fade to black.</li></ul></dd>
+        <dt>Transition</dt><dd>None. Ends on the held frame.</dd>
+        <dt>Sound</dt><dd>Logo chime <span class="t">0:13.60</span> −16 dB · click <span class="t">0:14.12</span> −20 dB · music fades out over the last 0.35 s</dd>
+        <dt>Subtitles</dt><dd><span class="sub"><b>serpforge.io</b></span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <div class="notes">
+    <h2>Before the final video (Step 9)</h2>
+    <ul>
+      <li><b>Sound effects:</b> <code>library/sfx</code> is empty. Add your SFX pack, or I'll set up the Real SFX skill's free CC0 UI pack (uisfx).</li>
+      <li><b>Music:</b> <code>library/music</code> is empty. Add a lo-fi or tech bed with no vocals, about 90–100 BPM.</li>
+      <li><b>Safe zone:</b> the subtitles sit below the Reels/Shorts safe line, as approved in style sheet v2. HyperFrames warns about every subtitle word, and that's expected.</li>
+      <li>Every scene is built in <code>05_build/project</code>. The stills are real HyperFrames frames, and the build passes <code>hyperframes check</code> with no errors.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #s05 .an { width: 880px; padding-bottom: 28px; }
+    #s05 .hrow { gap: 18px; }
+    #s05 .hrow img { width: 46px; height: 46px; }
+    #s05 .lbl { font-size: 30px; font-weight: 600; color: var(--c-amber); letter-spacing: 0.1em; }
+    #s05 .grow { margin-left: auto; font-size: 28px; padding: 8px 18px; }
+    #s05 .grow img { width: 30px; height: 30px; }
+    #s05 svg { display: block; margin-top: 26px; width: 812px; height: 528px; }
+    #s05 .ticks { display: flex; justify-content: space-between; padding: 6px 22px 0 30px; font-size: 22px; color: var(--c-muted); }
+    #s05 .eglow { position: absolute; left: 700px; top: 560px; width: 380px; height: 380px; background: radial-gradient(closest-side, rgba(49, 205, 136, .28), rgba(49, 205, 136, 0)); }
+  </style>
+  <div id="s05" class="scene-root" data-composition-id="s05" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <div class="eglow" id="s05-glow" data-layout-allow-overflow></div>
+    <h1 class="tx" id="s05-tx"><span><span class="wd" data-t="0.17">Let's</span> <span class="wd" data-t="0.42">build</span> <span class="wd" data-t="0.83">your</span><br /><b class="wd" data-t="1.17">visibility.</b></span></h1>
+    <div class="vz" id="s05-vz">
+      <div class="wcard an" id="s05-win" data-title="analytics">
+        <div class="hrow"><img src="assets/icons/trend-up.svg" alt="" /><span class="lbl">AI + SEARCH VISIBILITY</span>
+          <span class="chip green grow" id="s05-chip"><img src="assets/icons/trend-up.svg" alt="" />growing</span></div>
+        <svg viewBox="0 0 800 520" id="s05-svg">
+          <defs><linearGradient id="s05-ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#31CD88" stop-opacity="0.32" /><stop offset="1" stop-color="#31CD88" stop-opacity="0" /></linearGradient></defs>
+          <g id="s05-gridl" stroke="rgba(171,220,214,0.10)" stroke-width="1.5">
+            <line x1="40" y1="80" x2="760" y2="80" /><line x1="40" y1="200" x2="760" y2="200" /><line x1="40" y1="320" x2="760" y2="320" /><line x1="40" y1="440" x2="760" y2="440" />
+          </g>
+          <path id="s05-area" d="M40.0,440.0 C57.1,436.7 108.6,426.0 142.9,420.0 C177.1,414.0 211.4,413.7 245.7,404.0 C280.0,394.3 314.3,376.3 348.6,362.0 C382.9,347.7 417.1,337.3 451.4,318.0 C485.7,298.7 520.0,272.3 554.3,246.0 C588.6,219.7 622.9,190.3 657.1,160.0 C691.4,129.7 742.9,80.0 760.0,64.0 L760,500 L40,500 Z" fill="url(#s05-ag)" />
+          <path id="s05-line" d="M40.0,440.0 C57.1,436.7 108.6,426.0 142.9,420.0 C177.1,414.0 211.4,413.7 245.7,404.0 C280.0,394.3 314.3,376.3 348.6,362.0 C382.9,347.7 417.1,337.3 451.4,318.0 C485.7,298.7 520.0,272.3 554.3,246.0 C588.6,219.7 622.9,190.3 657.1,160.0 C691.4,129.7 742.9,80.0 760.0,64.0" fill="none" stroke="#31CD88" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" />
+          <circle id="s05-dot" cx="760" cy="64" r="15" fill="#31CD88" stroke="#0A0E0D" stroke-width="5" />
+        </svg>
+        <div class="ticks" id="s05-ticks"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out", INOUT = "power2.inOut", BACK = "back.out(1.4)";
+      tl.fromTo("#s05-win", { y: 40, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: OUT }, 0);
+      document.querySelectorAll("#s05 .tx [data-t]").forEach(w =>
+        tl.fromTo(w, { opacity: 0, y: 10, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: SOFT }, +w.dataset.t));
+      tl.fromTo(["#s05-gridl", "#s05-ticks"], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: SOFT }, 0.45);
+      tl.fromTo("#s05-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.72, ease: INOUT }, 0.45);
+      tl.fromTo("#s05-area", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: SOFT }, 1.17);
+      tl.fromTo("#s05-dot", { scale: 0.6, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.35, ease: BACK }, 1.17);
+      tl.fromTo("#s05-glow", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: SOFT }, 1.17);
+      tl.fromTo("#s05-chip", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: SOFT }, 1.25);
+      tl.to(["#s05-vz", "#s05-tx", "#s05-glow"], { opacity: 0, filter: "blur(6px)", scale: 0.97, duration: 0.2, ease: "power2.in" }, 2.0);
+      window.__timelines["s05"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,10 @@
+{
+  "name": "serpforge-icon-library",
+  "private": true,
+  "description": "Local, offline icon and brand-logo sets for SERP Forge videos (see .claude/skills/serpforge-visual-assets)",
+  "dependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "lucide-static": "^1.74.0",
+    "simple-icons": "^16.38.0"
+  }
+}

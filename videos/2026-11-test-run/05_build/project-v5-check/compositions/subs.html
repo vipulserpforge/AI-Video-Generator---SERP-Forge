@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #subs { position: absolute; inset: 0; pointer-events: none; }
+    #subs .sg { position: absolute; left: var(--sub-x); top: var(--sub-y); max-width: var(--sub-max-w); display: inline-flex; gap: 0.28em; align-items: center; white-space: nowrap;
+      padding: var(--sub-pad-y) var(--sub-pad-x); border-radius: var(--sub-radius); background: var(--sub-bg); border: var(--border-w) solid var(--sub-border); box-shadow: var(--shadow-card);
+      font-family: "Outfit", sans-serif; font-size: var(--sub-fs); font-weight: var(--sub-fw); line-height: var(--sub-lh); letter-spacing: -0.01em; opacity: 0; visibility: hidden; }
+    #subs .sw { position: relative; color: var(--sub-word-next); }
+    #subs .sw.key .kb { position: absolute; left: -10px; right: -10px; top: -2px; bottom: -4px; border-radius: var(--sub-key-radius); background: var(--sub-key-bg); transform: scaleX(0); transform-origin: left center; }
+    #subs .sw .tx { position: relative; }
+  </style>
+  <div id="subs" data-composition-id="subs" data-width="1080" data-height="1920">
+    <div class="sg" id="subs-g1" data-open="0.110" data-close="1.440"><span class="sw" data-t="0.160"><span class="tx">Your</span></span><span class="sw" data-t="0.400"><span class="tx">buyers</span></span><span class="sw" data-t="0.990"><span class="tx">ask</span></span><span class="sw" data-t="1.290"><span class="tx">AI</span></span></div>
+    <div class="sg" id="subs-g2" data-open="1.440" data-close="2.750"><span class="sw" data-t="1.490"><span class="tx">for</span></span><span class="sw" data-t="1.800"><span class="tx">a</span></span><span class="sw key" data-t="1.890"><span class="kb"></span><span class="tx">shortlist.</span></span></div>
+    <div class="sg" id="subs-g3" data-open="4.190" data-close="5.190"><span class="sw" data-t="4.240"><span class="tx">Is</span></span><span class="sw" data-t="4.290"><span class="tx">your</span></span><span class="sw" data-t="4.710"><span class="tx">brand</span></span></div>
+    <div class="sg" id="subs-g4" data-open="5.190" data-close="5.608"><span class="sw key" data-t="5.240"><span class="kb"></span><span class="tx">on</span></span><span class="sw" data-t="5.440"><span class="tx">it?</span></span></div>
+    <div class="sg" id="subs-g5" data-open="6.090" data-close="7.180"><span class="sw" data-t="6.140"><span class="tx">SERP</span></span><span class="sw" data-t="6.480"><span class="tx">Forge</span></span><span class="sw" data-t="6.880"><span class="tx">gets</span></span></div>
+    <div class="sg" id="subs-g6" data-open="7.180" data-close="8.203"><span class="sw" data-t="7.230"><span class="tx">SaaS</span></span><span class="sw" data-t="7.600"><span class="tx">brands</span></span><span class="sw" data-t="8.180"><span class="tx">found</span></span></div>
+    <div class="sg" id="subs-g7" data-open="8.660" data-close="9.840"><span class="sw" data-t="8.710"><span class="tx">on</span></span><span class="sw" data-t="8.850"><span class="tx">Google</span></span><span class="sw key" data-t="9.520"><span class="kb"></span><span class="tx">and</span></span></div>
+    <div class="sg" id="subs-g8" data-open="9.920" data-close="11.139"><span class="sw" data-t="9.970"><span class="tx">in</span></span><span class="sw" data-t="10.050"><span class="tx">AI</span></span><span class="sw" data-t="10.260"><span class="tx">answers.</span></span></div>
+    <div class="sg" id="subs-g9" data-open="11.470" data-close="12.470"><span class="sw" data-t="11.520"><span class="tx">Let&#x27;s</span></span><span class="sw" data-t="11.770"><span class="tx">build</span></span><span class="sw" data-t="12.180"><span class="tx">your</span></span></div>
+    <div class="sg" id="subs-g10" data-open="12.470" data-close="13.023"><span class="sw key" data-t="12.520"><span class="kb"></span><span class="tx">visibility.</span></span></div>
+    <div class="sg" id="subs-g11" data-open="14.070" data-close="16.417"><span class="sw key" data-t="14.120"><span class="kb"></span><span class="tx">serpforge.io</span></span></div>
+  </div>
+  <script>
+    (() => {
+      // Generated from 02_audio/transcript.json. Each word turns white on its own start time.
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll("#subs .sg").forEach((g) => {
+        const open = parseFloat(g.dataset.open), close = parseFloat(g.dataset.close);
+        tl.set(g, { visibility: "visible" }, open);
+        tl.fromTo(g, { opacity: 0, y: 12, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.15, ease: "expo.out" }, open);
+        g.querySelectorAll(".sw").forEach((w) => {
+          const t = parseFloat(w.dataset.t);
+          if (w.classList.contains("key")) {
+            tl.to(w, { color: "#0A0E0D", duration: 0.08, ease: "none" }, t);
+            tl.to(w.querySelector(".kb"), { scaleX: 1, duration: 0.15, ease: "expo.out" }, t);
+          } else {
+            tl.to(w, { color: "#FFFFFF", duration: 0.08, ease: "none" }, t);
+          }
+        });
+        tl.to(g, { opacity: 0, duration: 0.12, ease: "power2.in" }, close - 0.12);
+        tl.set(g, { opacity: 0, visibility: "hidden" }, close);
+      });
+      window.__timelines["subs"] = tl;
+    })();
+  </script>
+</template>

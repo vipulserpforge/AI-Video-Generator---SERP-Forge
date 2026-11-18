@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #s03 .browser { padding: var(--win-bar-h) 0 0; width: 900px; }
+    #s03 .shot { display: block; width: 900px; height: 471px; overflow: hidden; }
+    #s03 .shot img { display: block; width: 900px; height: 471px; transform-origin: 50% 40%; }
+    #s03 .result { margin-top: 34px; width: 900px; padding-bottom: 30px; }
+    #s03 .rtop { display: flex; align-items: center; gap: 18px; }
+    #s03 .fav { width: 60px; height: 60px; border-radius: 16px; display: grid; place-items: center; background: #0D2421; border: 1.5px solid rgba(171, 220, 214, .15); }
+    #s03 .fav img { width: 42px; }
+    #s03 .dom { font-size: 30px; color: var(--c-text-2); }
+    #s03 .rtitle { margin-top: 16px; font-size: 40px; font-weight: 600; color: var(--c-mint); letter-spacing: -0.01em; }
+    #s03 .rdesc { margin-top: 10px; font-size: 30px; color: var(--c-text-2); }
+    #s03 .found { margin-left: auto; font-size: 32px; font-weight: 600; padding: 12px 22px; background: rgba(49, 205, 136, .10); }
+    #s03 .found img { width: 34px; height: 34px; }
+    #s03 .gglow { position: absolute; left: 560px; top: 1240px; width: 460px; height: 300px; background: radial-gradient(closest-side, rgba(49, 205, 136, .2), rgba(49, 205, 136, 0)); }
+  </style>
+  <div id="s03" class="scene-root" data-composition-id="s03" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <div class="gglow" id="s03-glow" data-layout-allow-overflow></div>
+    <h1 class="tx l3" id="s03-tx"><span><span class="wd" data-t="0.19" data-e="0.53">SERP</span> <span class="wd" data-t="0.53" data-e="0.87">Forge</span> <span class="wd" data-t="0.93" data-e="1.28">gets</span><br /><span class="wd" data-t="1.28" data-e="1.65">SaaS</span> <span class="wd" data-t="1.65" data-e="2.23">brands</span><br /><span class="wd italic" data-t="2.23" data-e="2.253">found.</span></span></h1>
+    <div class="vz" id="s03-vz">
+      <div class="wcard browser" id="s03-win" data-title="serpforge.io">
+        <div class="shot"><img id="s03-img" src="assets/images/serpforge-home.png" alt="SERP Forge homepage" /></div>
+      </div>
+      <div class="wcard result" id="s03-res" data-title="search">
+        <div class="rtop">
+          <div class="fav"><img src="assets/logos/serpforge-logo-white.png" alt="" style="width: 44px; height: 44px; object-fit: cover; object-position: left center" /></div>
+          <span class="dom">serpforge.io</span>
+          <span class="chip green found" id="s03-found"><img src="assets/icons/seal-check.svg" alt="" />Found</span>
+        </div>
+        <div class="rtitle">SERP Forge: SEO and AI visibility for SaaS</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out", INOUT = "power2.inOut", BACK = "back.out(1.4)";
+      tl.fromTo("#s03-win", { y: 40, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: OUT }, 0);
+      tl.fromTo("#s03-img", { scale: 1 }, { scale: 1.03, duration: 2.75, ease: INOUT }, 0);
+      window.sfType(tl, "#s03");
+      tl.fromTo("#s03-res", { y: 30, opacity: 0, filter: "blur(6px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: SOFT }, 1.28);
+      tl.fromTo("#s03-found", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: BACK }, 2.23);
+      tl.fromTo("#s03-glow", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: SOFT }, 2.23);
+      // carry out: the page shrinks away toward the hub of s04
+      tl.to("#s03-vz", { scale: 0.6, opacity: 0, filter: "blur(6px)", duration: 0.25, ease: "power2.in" }, 2.5);
+      tl.to(["#s03-tx", "#s03-glow"], { opacity: 0, filter: "blur(6px)", duration: 0.25, ease: "power2.in" }, 2.5);
+      window.__timelines["s03"] = tl;
+    })();
+  </script>
+</template>

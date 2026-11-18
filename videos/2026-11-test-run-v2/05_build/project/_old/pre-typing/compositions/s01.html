@@ -1,0 +1,33 @@
+<template>
+  <div id="s01" class="scene-root" data-composition-id="s01" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <!-- transcription zone: on screen from frame 0 (thumbnail) -->
+    <h1 class="tx" id="s01-tx"><span>Your buyers ask AI<br />for a <b>shortlist.</b></span></h1>
+    <!-- visuals zone -->
+    <div class="vz" id="s01-vz">
+        <div class="wcard chatwin" id="s01-win" data-title="chatgpt">
+          <div class="hrow hdr"><div class="ltile"><img src="assets/logos/chatgpt.svg" alt="ChatGPT" /></div><span class="nm">ChatGPT</span></div>
+          <div class="prompt"><img src="assets/icons/search.svg" alt="" /><span class="qtext" id="s01-q">Best SEO agency for SaaS?</span><img src="assets/icons/sparkle.svg" alt="" /></div>
+          <div class="ans" id="s01-ans"><img src="assets/icons/list-numbers.svg" alt="" />Here's a shortlist</div>
+          <div class="rrow" id="s01-r1"><div class="rank">1</div>Agency A<div class="ln"></div></div>
+          <div class="rrow" id="s01-r2"><div class="rank">2</div>Agency B<div class="ln" style="max-width: 250px"></div></div>
+          <div class="rrow" id="s01-r3"><div class="rank">3</div>Agency C<div class="ln" style="max-width: 210px"></div></div>
+        </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out", INOUT = "power2.inOut";
+      tl.fromTo("#s01-win", { y: 40, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: OUT }, 0.39);
+      tl.fromTo("#s01-q", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power1.inOut" }, 1.0);
+      tl.fromTo("#s01-ans", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: SOFT }, 1.55);
+      [["#s01-r1", 1.89], ["#s01-r2", 1.97], ["#s01-r3", 2.05]].forEach(([s, t]) =>
+        tl.fromTo(s, { y: 24, scale: 0.96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: SOFT }, t));
+      tl.fromTo("#s01-vz", { y: 0 }, { y: -16, duration: 3.8, ease: INOUT }, 0);
+      // transcription leaves softly; the window is carried into s02
+      tl.to("#s01-tx", { opacity: 0, y: -10, filter: "blur(6px)", duration: 0.3, ease: "power3.in" }, 3.5);
+      window.__timelines["s01"] = tl;
+    })();
+  </script>
+</template>

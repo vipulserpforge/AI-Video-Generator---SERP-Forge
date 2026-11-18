@@ -1,0 +1,52 @@
+<template>
+  <style>
+    #s03 .logo { position: absolute; left: 335px; top: 760px; width: 410px; transform-origin: center center; }
+    #s03 .rcard { top: 900px; height: 400px; }
+    #s03 .rrow { margin-top: 30px; padding: 26px 28px; border-radius: var(--radius-inner); background: var(--c-bg-raise); border: var(--border-w) solid var(--c-border); }
+    #s03 .favicon { flex: none; width: 64px; height: 64px; border-radius: var(--radius-icon); background: var(--c-bg-deep); display: grid; place-items: center; font-size: 34px; font-weight: var(--fw-bold); color: var(--c-mint); }
+    #s03 .rname { font-size: 44px; font-weight: var(--fw-semibold); line-height: 1.15; }
+    #s03 .rurl { font-size: 32px; color: var(--c-muted); margin-top: 4px; }
+    #s03 .lines { margin-top: 26px; display: grid; gap: 14px; }
+    #s03 .greenglow { position: absolute; left: 280px; top: 1160px; width: 520px; height: 200px; background: radial-gradient(closest-side, rgba(49, 205, 136, .18), rgba(49, 205, 136, 0)); }
+  </style>
+  <div id="s03" class="scene-root" data-composition-id="s03" data-width="1080" data-height="1920">
+    <div class="grid"></div><div class="drop"></div><div class="glow" style="top: 200px" data-layout-allow-overflow></div>
+    <div class="stage" id="s03-stage">
+      <img class="logo" id="s03-logo" src="assets/logos/serpforge-logo-white.png" alt="SERP Forge" />
+      <h2 class="title l3" id="s03-title">
+        <span class="w"><span class="wi">SERP</span></span> <span class="w"><span class="wi">Forge</span></span> <span class="w"><span class="wi">gets</span></span><br />
+        <span class="w"><span class="wi">SaaS</span></span> <span class="w"><span class="wi">brands</span></span><br />
+        <span class="w"><span class="wi italic">found.</span></span>
+      </h2>
+      <div class="greenglow" id="s03-greenglow"></div>
+      <div class="card rcard" id="s03-card">
+        <div class="clabel">Search visibility</div>
+        <div class="rrow row">
+          <div class="favicon">Y</div>
+          <div><div class="rname">Your SaaS brand</div><div class="rurl">yourbrand.com</div></div>
+        </div>
+        <div class="lines"><div class="bar-line" style="width: 88%"></div><div class="bar-line" style="width: 64%"></div></div>
+        <div style="margin-top: 26px"><span class="chip green" id="s03-found"><span class="dot" id="s03-dot"></span><span id="s03-foundtx">Found</span></span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", BACK = "back.out(1.4)";
+      // local time = film time - 5.95 (tile wipe covers 0 to ~0.25)
+      tl.fromTo("#s03-logo", { scale: 0.9, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: OUT }, 0.0);
+      const words = document.querySelectorAll("#s03-title .wi");
+      [0.19, 0.53, 0.93, 1.28, 1.65, 2.23].forEach((t, i) =>
+        tl.fromTo(words[i], { yPercent: 45, opacity: 0, filter: "blur(6px)" }, { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: OUT }, t));
+      tl.fromTo("#s03-card", { y: 60, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 1.15);
+      tl.fromTo("#s03-found", { opacity: 0 }, { opacity: 1, duration: 0.1, ease: OUT }, 2.23);
+      tl.fromTo("#s03-dot", { scale: 0.6 }, { scale: 1, duration: 0.35, ease: BACK }, 2.23);
+      tl.fromTo("#s03-greenglow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: OUT }, 2.23);
+      tl.fromTo("#s03-stage", { y: 0 }, { y: -16, duration: 2.35, ease: "power2.inOut" }, 0);
+      // whip out (upward smear)
+      tl.to("#s03-stage", { y: -260, filter: "blur(12px)", duration: 0.15, ease: "power3.in" }, 2.35);
+      window.__timelines["s03"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,54 @@
+<template>
+  <style>
+    #s02 .layer, #s02 .layer * { font-family: "Inter", sans-serif; }
+    #s02 .layer { position: absolute; left: 80px; top: 585px; width: 920px; height: 925px; }
+    #s02 .brandrow { position: absolute; left: 110px; width: 700px; top: 545px; height: 120px; display: flex; align-items: center; justify-content: center; gap: 24px;
+      border: 2.5px dashed rgba(171, 220, 214, .35); border-radius: 26px; background: rgba(13, 36, 33, .55); font-size: 46px; font-weight: 600; color: var(--c-mint); }
+    #s02 .qtile { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: #0D2421; border: 1.5px solid rgba(171, 220, 214, .2); font-size: 40px; font-weight: 700; color: var(--c-amber); }
+    #s02 .stamp { position: absolute; left: 110px; width: 700px; top: 700px; height: 170px; display: flex; align-items: center; justify-content: center; gap: 26px;
+      border: 7px solid var(--c-red); border-radius: 28px; color: var(--c-red); font-size: 80px; font-weight: 800; letter-spacing: 0.04em; white-space: nowrap; background: rgba(40, 10, 10, .55); }
+    #s02 .stamp img { width: 84px; height: 84px; }
+    #s02 .redglow { position: absolute; left: 40px; top: 560px; width: 840px; height: 460px; background: radial-gradient(closest-side, rgba(248, 83, 77, .22), rgba(248, 83, 77, 0)); }
+  </style>
+  <div id="s02" class="scene-root" data-composition-id="s02" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div>
+    <h1 class="tx"><span><span class="wd" data-t="0.44">Is</span> <span class="wd" data-t="0.49">your</span> <span class="wd" data-t="0.91">brand</span><br /><span class="wd k-frame" data-t="1.44"><span class="fr"><span class="sel" id="s02-sel"><i></i><i></i><i></i><i></i></span></span>on it?</span></span></h1>
+    <!-- the chatgpt window carried from s01 (same layout, then smaller and higher) -->
+    <div class="vz" id="s02-vz">
+        <div class="wcard chatwin" id="s02-win" data-title="chatgpt">
+          <div class="hrow hdr"><div class="ltile"><img src="assets/logos/chatgpt.svg" alt="ChatGPT" /></div><span class="nm">ChatGPT</span></div>
+          <div class="prompt"><img src="assets/icons/search.svg" alt="" /><span class="qtext" id="s02-q">Best SEO agency for SaaS?</span><img src="assets/icons/sparkle.svg" alt="" /></div>
+          <div class="ans" id="s02-ans"><img src="assets/icons/list-numbers.svg" alt="" />Here's a shortlist</div>
+          <div class="rrow" id="s02-r1"><div class="rank">1</div>Agency A<div class="ln"></div></div>
+          <div class="rrow" id="s02-r2"><div class="rank">2</div>Agency B<div class="ln" style="max-width: 250px"></div></div>
+          <div class="rrow" id="s02-r3"><div class="rank">3</div>Agency C<div class="ln" style="max-width: 210px"></div></div>
+        </div>
+    </div>
+    <div class="layer">
+      <div class="redglow" id="s02-glow" data-layout-allow-overflow></div>
+      <div class="brandrow" id="s02-row"><div class="qtile">?</div>Your brand</div>
+      <div class="stamp" id="s02-stamp"><img src="assets/icons/warning.svg" alt="" />NOT LISTED</div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", SOFT = "power3.out", INOUT = "power2.inOut";
+      // carry: s01's window shrinks and moves up to make room (0.6 s)
+      tl.fromTo("#s02-vz", { y: -16 }, { y: -16, duration: 0.01 }, 0);
+      tl.fromTo("#s02-win", { scale: 1, y: 0 }, { scale: 0.6, y: -235, duration: 0.6, ease: INOUT }, 0);
+      document.querySelectorAll("#s02 .tx [data-t]").forEach(w =>
+        tl.fromTo(w, { opacity: 0, y: 10, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: SOFT }, +w.dataset.t));
+      // marquee: opens around "on" (5.24), stretches over "it?" (5.44), tiny overshoot, settles
+      tl.fromTo("#s02-sel", { opacity: 0 }, { opacity: 1, duration: 0.07, ease: "power1.out" }, 1.44);
+      tl.fromTo("#s02-sel", { width: "34%" }, { width: "100%", duration: 0.4, ease: "back.out(1.2)" }, 1.52);
+      tl.fromTo("#s02-row", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: SOFT }, 0.91);
+      tl.fromTo("#s02-stamp", { scale: 1.25, rotation: -12, opacity: 0, filter: "blur(6px)" }, { scale: 1, rotation: -6, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 1.44);
+      tl.fromTo("#s02-glow", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: SOFT }, 1.44);
+      tl.to("#s02-win", { opacity: 0.7, duration: 0.4, ease: SOFT }, 1.44);
+      // soft crossfade out
+      tl.to(["#s02-vz", "#s02 .layer", "#s02 .tx"], { opacity: 0, filter: "blur(6px)", scale: 0.96, duration: 0.3, ease: "power2.in" }, 1.85);
+      window.__timelines["s02"] = tl;
+    })();
+  </script>
+</template>

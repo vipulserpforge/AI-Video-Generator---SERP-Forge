@@ -1,0 +1,9 @@
+# dependencies (restore with: cd library/icons && npm install)
+node_modules/
+# HyperFrames caches and snapshots
+.hyperframes/
+# macOS junk
+.DS_Store
+._*
+__pycache__/
+*.pyc

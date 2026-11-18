@@ -1,0 +1,170 @@
+[
+  {
+    "text": "Your",
+    "start": 0.16,
+    "end": 0.4,
+    "id": "w0"
+  },
+  {
+    "text": "buyers",
+    "start": 0.4,
+    "end": 0.99,
+    "id": "w1"
+  },
+  {
+    "text": "ask",
+    "start": 0.99,
+    "end": 1.29,
+    "id": "w2"
+  },
+  {
+    "text": "AI",
+    "start": 1.29,
+    "end": 1.49,
+    "id": "w3"
+  },
+  {
+    "text": "for",
+    "start": 1.49,
+    "end": 1.66,
+    "id": "w4"
+  },
+  {
+    "text": "a",
+    "start": 1.8,
+    "end": 1.89,
+    "id": "w5"
+  },
+  {
+    "text": "shortlist.",
+    "start": 1.89,
+    "end": 4.08,
+    "id": "w6"
+  },
+  {
+    "text": "Is",
+    "start": 4.24,
+    "end": 4.29,
+    "id": "w7"
+  },
+  {
+    "text": "your",
+    "start": 4.29,
+    "end": 4.71,
+    "id": "w8"
+  },
+  {
+    "text": "brand",
+    "start": 4.71,
+    "end": 5.19,
+    "id": "w9"
+  },
+  {
+    "text": "on",
+    "start": 5.24,
+    "end": 5.44,
+    "id": "w10"
+  },
+  {
+    "text": "it?",
+    "start": 5.44,
+    "end": 5.98,
+    "id": "w11"
+  },
+  {
+    "text": "Serpforge",
+    "start": 6.14,
+    "end": 6.82,
+    "id": "w12"
+  },
+  {
+    "text": "gets",
+    "start": 6.88,
+    "end": 7.23,
+    "id": "w13"
+  },
+  {
+    "text": "SaaS",
+    "start": 7.23,
+    "end": 7.6,
+    "id": "w14"
+  },
+  {
+    "text": "brands",
+    "start": 7.6,
+    "end": 8.18,
+    "id": "w15"
+  },
+  {
+    "text": "found",
+    "start": 8.18,
+    "end": 8.71,
+    "id": "w16"
+  },
+  {
+    "text": "on",
+    "start": 8.71,
+    "end": 8.85,
+    "id": "w17"
+  },
+  {
+    "text": "Google",
+    "start": 8.85,
+    "end": 9.52,
+    "id": "w18"
+  },
+  {
+    "text": "and",
+    "start": 9.52,
+    "end": 9.84,
+    "id": "w19"
+  },
+  {
+    "text": "in",
+    "start": 9.97,
+    "end": 10.05,
+    "id": "w20"
+  },
+  {
+    "text": "AI",
+    "start": 10.05,
+    "end": 10.26,
+    "id": "w21"
+  },
+  {
+    "text": "answers.",
+    "start": 10.26,
+    "end": 11.36,
+    "id": "w22"
+  },
+  {
+    "text": "Let's",
+    "start": 11.52,
+    "end": 11.77,
+    "id": "w23"
+  },
+  {
+    "text": "build",
+    "start": 11.77,
+    "end": 12.08,
+    "id": "w24"
+  },
+  {
+    "text": "your",
+    "start": 12.18,
+    "end": 12.47,
+    "id": "w25"
+  },
+  {
+    "text": "visibility!",
+    "start": 12.52,
+    "end": 13.96,
+    "id": "w26"
+  },
+  {
+    "text": "Serpforge.io",
+    "start": 14.12,
+    "end": 16.56,
+    "id": "w27"
+  }
+]

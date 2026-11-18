@@ -1,0 +1,257 @@
+{
+ "duration": 16.77,
+ "lufs": -14.01,
+ "true_peak_dbtp": -1.36,
+ "speech": [
+  [
+   0.0,
+   2.750408
+  ],
+  [
+   3.989819,
+   4.884014
+  ],
+  [
+   5.148141,
+   5.607868
+  ],
+  [
+   6.026213,
+   8.202585
+  ],
+  [
+   8.772154,
+   11.13898
+  ],
+  [
+   11.54093,
+   13.023084
+  ],
+  [
+   13.989637,
+   16.416576
+  ]
+ ],
+ "density_per_s": 0.83,
+ "cues": [
+  {
+   "t": 1.0,
+   "type": "click",
+   "level_db": -25.0,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s01 question types in",
+   "frame": 30,
+   "boost_db": 10.0,
+   "music_dip_db": -5.7,
+   "peak50_db": -40.4,
+   "above_music_db": 2.0,
+   "below_voice_speechband_db": 24.4
+  },
+  {
+   "t": 1.89,
+   "type": "pop",
+   "level_db": -25.3,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s01 shortlist rows land",
+   "frame": 57,
+   "boost_db": 3.7,
+   "music_dip_db": -6.0,
+   "peak50_db": -38.1,
+   "above_music_db": -0.5,
+   "below_voice_speechband_db": 13.0
+  },
+  {
+   "t": 3.8,
+   "type": "whoosh",
+   "level_db": -14.0,
+   "align": "peak",
+   "strong": true,
+   "under_voice": false,
+   "speech_overlap": 0.0,
+   "note": "s01>s02 handover",
+   "frame": 114,
+   "boost_db": 8.0,
+   "peak50_db": -22.0,
+   "above_music_db": 3.8
+  },
+  {
+   "t": 4.71,
+   "type": "pop",
+   "level_db": -28.0,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s02 empty slot appears",
+   "frame": 141,
+   "boost_db": 2.2,
+   "music_dip_db": -6.0,
+   "peak50_db": -40.9,
+   "above_music_db": -4.0,
+   "below_voice_speechband_db": 13.0
+  },
+  {
+   "t": 5.24,
+   "type": "subdrop",
+   "level_db": -18.4,
+   "align": "onset",
+   "strong": true,
+   "under_voice": true,
+   "speech_overlap": 0.47,
+   "note": "s02 'on' / Not listed",
+   "frame": 157,
+   "boost_db": 4.6,
+   "music_dip_db": -6.0,
+   "peak50_db": -26.5,
+   "above_music_db": 2.7,
+   "below_voice_speechband_db": 12.4
+  },
+  {
+   "t": 5.95,
+   "type": "whoosh",
+   "level_db": -13.2,
+   "align": "peak",
+   "strong": true,
+   "under_voice": false,
+   "speech_overlap": 0.16,
+   "note": "s02>s03 handover",
+   "frame": 178,
+   "boost_db": 10.0,
+   "music_dip_db": -4.0,
+   "peak50_db": -21.4,
+   "above_music_db": 6.3
+  },
+  {
+   "t": 7.6,
+   "type": "pop",
+   "level_db": -19.6,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s03 search window",
+   "frame": 228,
+   "boost_db": 10.0,
+   "music_dip_db": -1.8,
+   "peak50_db": -32.2,
+   "above_music_db": 2.0,
+   "below_voice_speechband_db": 17.7
+  },
+  {
+   "t": 8.18,
+   "type": "shutter",
+   "level_db": -18.6,
+   "align": "onset",
+   "strong": false,
+   "under_voice": false,
+   "speech_overlap": 0.0,
+   "note": "s03 'found' captured",
+   "frame": 245,
+   "boost_db": 3.4,
+   "peak50_db": -35.0,
+   "above_music_db": 4.0
+  },
+  {
+   "t": 8.85,
+   "type": "pop",
+   "level_db": -24.8,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s04 google window",
+   "frame": 266,
+   "boost_db": 6.0,
+   "music_dip_db": -6.0,
+   "peak50_db": -37.7,
+   "above_music_db": -0.5,
+   "below_voice_speechband_db": 13.0
+  },
+  {
+   "t": 10.05,
+   "type": "pop",
+   "level_db": -20.7,
+   "align": "onset",
+   "strong": false,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s04 ai answer window",
+   "frame": 302,
+   "boost_db": 8.3,
+   "peak50_db": -33.5,
+   "above_music_db": 1.0,
+   "below_voice_speechband_db": 15.5
+  },
+  {
+   "t": 11.35,
+   "type": "whoosh",
+   "level_db": -23.0,
+   "align": "peak",
+   "strong": true,
+   "under_voice": true,
+   "speech_overlap": 0.32,
+   "note": "s04>s05 handover",
+   "frame": 340,
+   "boost_db": 4.6,
+   "music_dip_db": -6.0,
+   "peak50_db": -30.9,
+   "above_music_db": 0.2,
+   "below_voice_speechband_db": 10.1
+  },
+  {
+   "t": 12.52,
+   "type": "riser",
+   "level_db": -19.0,
+   "align": "end",
+   "strong": true,
+   "under_voice": true,
+   "speech_overlap": 0.99,
+   "note": "s05 builds into 'visibility' (ends on the green bar)",
+   "frame": 376,
+   "boost_db": 10.0,
+   "music_dip_db": -3.1,
+   "peak50_db": -30.3,
+   "above_music_db": 1.9,
+   "below_voice_speechband_db": 20.1
+  },
+  {
+   "t": 13.55,
+   "type": "whoosh",
+   "level_db": -13.8,
+   "align": "peak",
+   "strong": true,
+   "under_voice": false,
+   "speech_overlap": 0.0,
+   "note": "s05>s06 handover",
+   "frame": 406,
+   "boost_db": 10.0,
+   "music_dip_db": -4.0,
+   "peak50_db": -22.1,
+   "above_music_db": 3.5
+  },
+  {
+   "t": 14.12,
+   "type": "subdrop",
+   "level_db": -15.0,
+   "align": "onset",
+   "strong": true,
+   "under_voice": true,
+   "speech_overlap": 1.0,
+   "note": "s06 URL / logo lands",
+   "frame": 424,
+   "boost_db": 9.2,
+   "peak50_db": -24.6,
+   "above_music_db": 0.2,
+   "below_voice_speechband_db": 27.4
+  }
+ ],
+ "warnings": [
+  "pop at 4.71: under a spoken word it can only reach -4.0 dB vs the music: keep it subtle (felt, not heard) or move it to the nearest pause / a softer moment"
+ ]
+}

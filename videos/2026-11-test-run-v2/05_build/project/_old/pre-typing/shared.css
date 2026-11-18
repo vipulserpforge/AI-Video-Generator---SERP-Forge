@@ -1,0 +1,111 @@
+/* Shared scene styles. Values come from tokens.css (brand/STYLE-SHEET.md v2). */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.scene-root { position: absolute; inset: 0; overflow: hidden; background: var(--c-bg); font-family: "Outfit", sans-serif; color: var(--c-text); }
+.grid { position: absolute; inset: 0;
+  background-image: linear-gradient(var(--c-grid) 1px, transparent 1px), linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size); }
+.glow { display: none; position: absolute; width: 1300px; height: 1300px; left: -110px; top: 360px; background: var(--g-glow-teal); }
+.glow-warm { position: absolute; width: 900px; height: 700px; left: 90px; top: 760px; background: var(--g-glow-orange); }
+.stage { position: absolute; inset: 0; }
+
+.label { position: absolute; left: var(--col-left); width: var(--col-width); text-align: center; top: 340px; font-size: var(--fs-label); font-weight: var(--fw-semibold); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--c-amber); }
+.title { position: absolute; left: var(--col-left); top: calc(var(--zone-tx-top) + var(--zone-tx-h) / 2); transform: translateY(-50%); width: var(--col-width); text-align: center; font-size: var(--fs-title); font-weight: var(--fw-bold); line-height: var(--lh-title); letter-spacing: var(--ls-title); }
+.italic { font-family: "Playfair Display", serif; font-style: italic; font-weight: var(--fw-medium); font-size: var(--fs-title-italic); letter-spacing: -0.01em;
+  background: var(--g-italic); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 8px; }
+.title { font-size: var(--tx-fs); font-weight: var(--tx-fw); line-height: var(--tx-lh); letter-spacing: -0.01em; color: var(--tx-color); text-shadow: var(--tx-shadow); }
+.title .italic { font-size: calc(var(--tx-fs) + 8px); text-shadow: none; }
+.title.l3 { font-size: var(--tx-fs-3line); }
+.title.l3 .italic { font-size: calc(var(--tx-fs-3line) + 8px); }
+/* key-word styles (STYLE-SHEET section 7) */
+.k-lift { font-weight: var(--tx-fw-key); color: var(--tx-color-key); }   /* "bold" key-word style */
+.k-frame { position: relative; display: inline-block; font-weight: var(--tx-fw-key); color: var(--tx-color-key); padding: 0 6px; }
+.k-frame .fr { position: absolute; left: -6px; right: -6px; top: 8%; bottom: 2%; border: var(--tx-frame-w) solid var(--tx-frame); pointer-events: none; }
+.k-frame .fr i { position: absolute; width: var(--tx-handle); height: var(--tx-handle); background: var(--c-bg); border: var(--tx-frame-w) solid var(--tx-frame); }
+.k-frame .fr i:nth-child(1) { left: -5px; top: -5px; } .k-frame .fr i:nth-child(2) { right: -5px; top: -5px; }
+.k-frame .fr i:nth-child(3) { left: -5px; bottom: -5px; } .k-frame .fr i:nth-child(4) { right: -5px; bottom: -5px; }
+.drop { position: absolute; left: calc(var(--drop-cx) - var(--drop-w) / 2); top: calc(var(--drop-cy) - var(--drop-h) / 2); width: var(--drop-w); height: var(--drop-h); background: var(--drop-bg); pointer-events: none; }
+/* visuals fill the marked box (x 80-1000, y 585-1510): scale the composition about its own centre, move it to the box centre */
+.vis { position: absolute; inset: 0; transform-origin: 540px var(--vc); transform: translateY(calc(var(--zone-vis-cy) - var(--vc))) scale(var(--vs)); }
+/* window card (STYLE-SHEET section 3) */
+.card.win { border-radius: var(--win-radius); padding-top: calc(var(--win-bar-h) + var(--pad-card)); overflow: hidden; }
+.card.win::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--win-bar-h); border-bottom: 1px solid var(--c-border);
+  background:
+    radial-gradient(circle at calc(var(--win-dot-left) + 7px) 50%, var(--win-dot-red) 6.5px, transparent 7.5px),
+    radial-gradient(circle at calc(var(--win-dot-left) + 31px) 50%, var(--win-dot-amber) 6.5px, transparent 7.5px),
+    radial-gradient(circle at calc(var(--win-dot-left) + 55px) 50%, var(--win-dot-green) 6.5px, transparent 7.5px),
+    var(--win-bar); }
+.card.win::after { content: attr(data-title); position: absolute; left: 0; right: 0; top: 0; height: var(--win-bar-h); line-height: var(--win-bar-h); text-align: center;
+  font-family: "Inter", sans-serif; font-weight: 500; font-size: var(--win-title-fs); letter-spacing: 0.02em; color: var(--win-title-color); }
+.w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.wi { display: inline-block; }
+.hl { position: relative; display: inline-block; }
+.hl .box { position: absolute; left: -10px; right: -10px; top: 12%; bottom: 2%; border-radius: var(--radius-highlight); background: var(--c-highlight); transform-origin: left center; }
+.hl .txt { position: relative; color: var(--tx-color-key); font-weight: var(--tx-fw-key); }
+
+.card { position: absolute; left: var(--card-left); width: var(--card-width); background: var(--c-surface); border: var(--border-w) solid var(--c-border); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--pad-card) 36px; }
+.clabel { font-size: var(--fs-label); font-weight: var(--fw-semibold); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--c-amber); }
+.chip { display: inline-flex; align-items: center; gap: 10px; font-size: 30px; font-weight: var(--fw-medium); padding: 10px 20px; border-radius: var(--radius-pill); border: var(--border-w) solid var(--c-border); color: var(--c-text-2); white-space: nowrap; }
+.chip.red { border-color: rgba(248, 83, 77, .6); color: var(--c-red); }
+.chip.green { border-color: rgba(49, 205, 136, .55); color: var(--c-green); }
+.chip.teal { background: var(--c-teal); border-color: var(--c-teal); color: var(--c-ink-on-accent); font-weight: var(--fw-semibold); }
+.dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; background: currentColor; }
+.tile { flex: none; width: 72px; height: 72px; border-radius: var(--radius-inner); display: grid; place-items: center; font-size: 38px; font-weight: var(--fw-bold); background: var(--c-bg-deep); color: var(--c-mint); }
+.tile.orange { background: var(--c-orange); color: var(--c-ink-on-accent); }
+.bar-line { height: 20px; border-radius: 10px; background: #1E2827; }
+.row { display: flex; align-items: center; gap: 22px; }
+
+/* ---- v2 building blocks (STYLE-SHEET v6 + Inter rule + window cards) ---- */
+/* visuals zone: the marked box, everything centred inside it; text is Inter */
+.vz { position: absolute; left: 80px; top: 585px; width: 920px; height: 925px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: "Inter", sans-serif; letter-spacing: -0.01em; color: var(--c-text); }
+.vz * { font-family: "Inter", sans-serif; }
+/* window card in normal flow inside .vz */
+.wcard { position: relative; width: 860px; background: var(--c-surface); border: var(--border-w) solid var(--c-border); border-radius: var(--win-radius);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .5); padding: calc(var(--win-bar-h) + 30px) 34px 32px; overflow: hidden; }
+.wcard::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: var(--win-bar-h); border-bottom: 1px solid var(--c-border);
+  background:
+    radial-gradient(circle at calc(var(--win-dot-left) + 7px) 50%, var(--win-dot-red) 6.5px, transparent 7.5px),
+    radial-gradient(circle at calc(var(--win-dot-left) + 31px) 50%, var(--win-dot-amber) 6.5px, transparent 7.5px),
+    radial-gradient(circle at calc(var(--win-dot-left) + 55px) 50%, var(--win-dot-green) 6.5px, transparent 7.5px),
+    var(--win-bar); }
+.wcard::after { content: attr(data-title); position: absolute; left: 0; right: 0; top: 0; height: var(--win-bar-h); line-height: var(--win-bar-h); text-align: center;
+  font-family: "Inter", sans-serif; font-weight: 500; font-size: var(--win-title-fs); letter-spacing: 0.01em; color: var(--win-title-color); }
+.ltile { flex: none; width: 76px; height: 76px; border-radius: 20px; display: grid; place-items: center; background: #0D2421; border: 1.5px solid rgba(171, 220, 214, .15); }
+.ltile.white { background: #FFFFFF; border-color: #FFFFFF; }
+.ltile img { width: 44px; height: 44px; }
+.hrow { display: flex; align-items: center; gap: 20px; }
+.muted { color: var(--c-text-2); }
+/* transcription zone: Outfit, white, regular, subtle shadow; words fade in on their spoken time */
+.tx { position: absolute; left: 108px; width: 864px; top: 240px; height: 255px; display: flex; align-items: center; justify-content: center; text-align: center;
+  font-family: "Outfit", sans-serif; font-weight: 400; font-size: 76px; line-height: 1.12; letter-spacing: -0.01em; color: #FFFFFF; text-shadow: var(--tx-shadow); }
+.tx.l3 { font-size: 64px; }
+.tx .wd { display: inline-block; }
+.tx b { font-weight: 700; }
+.tx .italic { font-size: 1.1em; text-shadow: none; }
+
+/* chatgpt window (s01, carried into s02) */
+.chatwin .hdr .nm { font-size: 46px; font-weight: 600; }
+.chatwin .prompt { margin-top: 28px; display: flex; align-items: center; gap: 18px; padding: 20px 24px; border-radius: 22px; background: #0B1615; border: 1.5px solid var(--c-border); font-size: 40px; }
+.chatwin .prompt img { width: 46px; height: 46px; flex: none; }
+.chatwin .qtext { flex: 1; white-space: nowrap; overflow: hidden; }
+.chatwin .ans { margin-top: 30px; display: flex; align-items: center; gap: 14px; font-size: 34px; font-weight: 500; color: var(--c-text-2); }
+.chatwin .ans img { width: 42px; height: 42px; }
+.chatwin .rrow { margin-top: 18px; display: flex; align-items: center; gap: 24px; padding: 16px 22px; border-radius: 20px; background: rgba(171, 220, 214, .04); border: 1.5px solid rgba(171, 220, 214, .10); font-size: 38px; font-weight: 500; }
+.chatwin .rank { flex: none; width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; background: #0D2421; border: 1.5px solid rgba(171, 220, 214, .15); font-weight: 700; font-size: 30px; color: var(--c-mint); }
+.chatwin .rrow .ln { flex: 1; height: 14px; border-radius: 7px; background: rgba(171, 220, 214, .10); max-width: 300px; margin-left: auto; }
+
+/* background: fine dot pattern (STYLE-SHEET section 3, approved 2026-11-18) */
+.grid { background-image: var(--dot-bg); background-size: var(--dot-gap) var(--dot-gap); background-position: 14px 14px;
+  -webkit-mask-image: var(--dot-mask); mask-image: var(--dot-mask); }
+
+/* subtitle highlight box: solid #F8981C, dark ink word (STYLE-SHEET section 7, approved 2026-11-18) */
+.hl .box { background: var(--c-highlight); }
+.hl .txt { color: var(--c-highlight-ink); text-shadow: none; }
+
+/* selection frame drawn like a design-tool marquee (ref 5): opens on the first key word, stretches right over the phrase */
+.k-frame .fr { border: none; }
+.k-frame .fr .sel { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border: 2px solid var(--tx-frame); background: rgba(248, 100, 10, 0.10); }
+.k-frame .fr i { width: 8px; height: 8px; background: var(--tx-frame); border: none; }
+.k-frame .fr i:nth-child(1) { left: -5px; top: -5px; } .k-frame .fr i:nth-child(2) { right: -5px; top: -5px; }
+.k-frame .fr i:nth-child(3) { left: -5px; bottom: -5px; } .k-frame .fr i:nth-child(4) { right: -5px; bottom: -5px; }

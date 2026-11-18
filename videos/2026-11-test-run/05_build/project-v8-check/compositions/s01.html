@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #s01 .chatcard { top: 813px; height: 560px; }
+    #s01 .chatcard .clabel { margin-bottom: 18px; }
+    #s01 .q { display: flex; align-items: center; gap: 20px; font-size: 34px; color: var(--c-text); height: 64px; }
+    #s01 .qicon { flex: none; width: 64px; height: 64px; border-radius: var(--radius-icon); background: var(--c-bg-deep); display: grid; place-items: center; }
+    #s01 .qtext { display: inline-block; white-space: nowrap; }
+    #s01 .div { height: 0; border-top: var(--border-w) solid var(--c-border); margin: 24px 0 16px; }
+    #s01 .srow { height: 64px; margin-bottom: 12px; }
+    #s01 .srow .tile { width: 60px; height: 60px; font-size: 32px; }
+    #s01 .srow .bar-line { flex: 1; max-width: 300px; }
+    #s01 .shine { background-size: 220% 100%; background-image: linear-gradient(90deg, #C2E4DC 0%, #FCBB82 40%, #FFFFFF 50%, #FCBB82 60%, #C2E4DC 100%); }
+  </style>
+  <div id="s01" class="scene-root" data-composition-id="s01" data-width="1080" data-height="1920">
+    <div class="drop" data-layout-allow-overflow></div><div class="grid"></div><div class="glow" style="top: 520px" data-layout-allow-overflow></div>
+    <div class="stage" id="s01-stage">
+      <h1 class="title" id="s01-title">Your buyers ask AI<br />for a <span class="k-lift" id="s01-italic">shortlist.</span></h1>
+      <div class="vis" style="--vc: 1093px; --vs: 1.25">
+      <div class="card chatcard win" id="s01-card" data-title="ai search">
+        <div class="q">
+          <div class="qicon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ABDCD6" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+          <span class="qtext" id="s01-qtext">"Best SEO agency for SaaS?"</span>
+        </div>
+        <div class="div"></div>
+        <div class="row srow" id="s01-r1"><div class="tile">1</div><div class="bar-line"></div><span class="chip">Agency</span></div>
+        <div class="row srow" id="s01-r2"><div class="tile">2</div><div class="bar-line" style="max-width: 260px"></div><span class="chip">Agency</span></div>
+        <div class="row srow" id="s01-r3"><div class="tile">3</div><div class="bar-line" style="max-width: 230px"></div><span class="chip">Agency</span></div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out", BACK = "back.out(1.4)";
+      // label + title are on screen at frame 0 (thumbnail), dead still
+      tl.fromTo("#s01-card", { y: 60, scale: 0.94, opacity: 0, filter: "blur(8px)" }, { y: 0, scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: OUT }, 0.6);
+      tl.fromTo("#s01-qtext", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "none" }, 1.0);
+      [["#s01-r1", 1.44], ["#s01-r2", 1.50], ["#s01-r3", 1.56]].forEach(([s, t]) =>
+        tl.fromTo(s, { x: -90, rotation: -6, opacity: 0 }, { x: 0, rotation: 0, opacity: 1, duration: 0.45, ease: BACK }, t));
+      tl.fromTo("#s01-italic", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 0.5, ease: OUT }, 1.9);
+      tl.fromTo("#s01-stage", { y: 0 }, { y: -16, duration: 3.8, ease: "power2.inOut" }, 0);
+      // blur swap out: only the title leaves (the card carries into s02)
+      tl.to("#s01-title", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 3.6);
+      window.__timelines["s01"] = tl;
+    })();
+  </script>
+</template>

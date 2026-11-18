@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #s05 .vcard { top: 845px; height: 460px; }
+    #s05 .note { position: absolute; right: 64px; top: 32px; font-size: 30px; font-weight: var(--fw-medium); color: var(--c-green); }
+    #s05 .bars { position: absolute; left: 36px; right: 36px; bottom: 36px; height: 280px; display: flex; align-items: flex-end; gap: 14px; }
+    #s05 .bar { flex: 1; border-radius: 12px 12px 6px 6px; background: #1E2A28; transform-origin: bottom; }
+    #s05 .bar.g { background: var(--c-green); }
+    #s05 .trend { position: absolute; left: 36px; right: 36px; bottom: 36px; height: 300px; }
+    #s05 .greenglow { position: absolute; left: 600px; top: 1025px; width: 460px; height: 360px; background: radial-gradient(closest-side, rgba(49, 205, 136, .16), rgba(49, 205, 136, 0)); }
+    #s05 .cover { position: absolute; inset: 0; background: var(--c-surface); }
+  </style>
+  <div id="s05" class="scene-root" data-composition-id="s05" data-width="1080" data-height="1920">
+    <div class="grid"></div><div class="drop"></div><div class="glow" style="top: 520px" data-layout-allow-overflow></div>
+    <div class="stage" id="s05-stage">
+      <h2 class="title" id="s05-title">
+        <span class="w"><span class="wi">Let's</span></span> <span class="w"><span class="wi">build</span></span> <span class="w"><span class="wi">your</span></span><br />
+        <span class="w"><span class="wi italic">visibility.</span></span>
+      </h2>
+      <div class="greenglow" id="s05-greenglow"></div>
+      <div class="card vcard" id="s05-card">
+        <div class="clabel">AI + search visibility</div>
+        <div class="note" id="s05-note">▲ growing</div>
+        <div class="bars">
+          <div class="bar" style="height: 18%"></div><div class="bar" style="height: 22%"></div><div class="bar" style="height: 26%"></div>
+          <div class="bar" style="height: 31%"></div><div class="bar" style="height: 38%"></div><div class="bar" style="height: 47%"></div>
+          <div class="bar" style="height: 58%"></div><div class="bar g" style="height: 74%"></div><div class="bar g" style="height: 96%"></div>
+        </div>
+        <svg class="trend" viewBox="0 0 648 300" preserveAspectRatio="none"><path id="s05-path" d="M20 250 C 140 240, 260 220, 360 175 S 560 60, 628 18" fill="none" stroke="#ABDCD6" stroke-width="5" stroke-linecap="butt" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+      </div>
+    </div>
+    <div class="cover" id="s05-cover"></div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "expo.out";
+      // local time = film time - 11.35. The zoomed card's fill fades into the scene.
+      tl.fromTo("#s05-cover", { opacity: 1 }, { opacity: 0, duration: 0.35, ease: OUT }, 0);
+      tl.fromTo("#s05-card", { scale: 1.04 }, { scale: 1, duration: 0.5, ease: OUT }, 0);
+      const words = document.querySelectorAll("#s05-title .wi");
+      [0.17, 0.42, 0.83, 1.17].forEach((t, i) =>
+        tl.fromTo(words[i], { yPercent: 45, opacity: 0, filter: "blur(6px)" }, { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: OUT }, t));
+      tl.fromTo("#s05 .bar", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: OUT, stagger: 0.031 }, 0.42);
+      tl.fromTo("#s05-path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: OUT }, 0.65);
+      tl.fromTo("#s05-note", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: OUT }, 1.25);
+      tl.fromTo("#s05-greenglow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: OUT }, 1.17);
+      tl.fromTo("#s05-stage", { y: 0 }, { y: -16, duration: 2.2, ease: "power2.inOut" }, 0);
+      // blur swap out
+      tl.to("#s05-stage", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 2.0);
+      window.__timelines["s05"] = tl;
+    })();
+  </script>
+</template>

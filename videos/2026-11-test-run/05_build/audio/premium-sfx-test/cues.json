@@ -1,0 +1,29 @@
+{
+  "voice": "videos/2026-11-test-run/02_audio/final.mp3",
+  "duration": 16.77,
+  "music": {
+    "file": "library/music/mixkit/mixkit-1167_close-up.mp3",
+    "start": 21.27,
+    "gap_lufs": -21,
+    "duck_db": -9,
+    "end_card_from": 13.55,
+    "end_card_duck_db": -5,
+    "width_db": -17
+  },
+  "cues": [
+    {"t": 1.00,  "type": "click",   "level": -30, "note": "s01 question types in"},
+    {"t": 1.89,  "type": "pop",     "note": "s01 shortlist rows land"},
+    {"t": 3.80,  "type": "whoosh",  "note": "s01>s02 handover"},
+    {"t": 4.71,  "type": "pop",     "note": "s02 empty slot appears"},
+    {"t": 5.24,  "type": "subdrop", "note": "s02 'on' / Not listed"},
+    {"t": 5.95,  "type": "whoosh",  "note": "s02>s03 handover"},
+    {"t": 7.60,  "type": "pop",     "note": "s03 search window"},
+    {"t": 8.18,  "type": "shutter", "note": "s03 'found' captured"},
+    {"t": 8.85,  "type": "pop",     "note": "s04 google window"},
+    {"t": 10.05, "type": "pop",     "note": "s04 ai answer window"},
+    {"t": 11.35, "type": "whoosh",  "note": "s04>s05 handover"},
+    {"t": 12.52, "type": "riser",   "note": "s05 builds into 'visibility' (ends on the green bar)"},
+    {"t": 13.55, "type": "whoosh",  "note": "s05>s06 handover"},
+    {"t": 14.12, "type": "subdrop", "note": "s06 URL / logo lands"}
+  ]
+}

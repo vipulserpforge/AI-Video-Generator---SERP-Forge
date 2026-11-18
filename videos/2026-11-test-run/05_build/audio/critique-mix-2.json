@@ -1,0 +1,811 @@
+{
+ "path": "mix.wav",
+ "video": null,
+ "duration": 16.77,
+ "profile_n": 3,
+ "lossy": false,
+ "profile": "../../../../references/analysis/earshot-profile.json",
+ "verdict": "launch-grade",
+ "score": 0.968,
+ "in_range": 19,
+ "scored": 20,
+ "critical_issues": 0,
+ "major_issues": 0,
+ "partial": [
+  "realness",
+  "music presence"
+ ],
+ "actions": [
+  {
+   "weight": "minor",
+   "metric": "band_sub",
+   "action": "too much 20-60 Hz rumble eats headroom and distorts small speakers: high-pass SFX and ambience at 30-40 Hz and cut the sub of the music by 2-4 dB (-14.5 dB share, refs -27.4 dB .. -20.2 dB)"
+  }
+ ],
+ "tips": [],
+ "metrics": [
+  {
+   "metric": "lufs_i",
+   "label": "integrated loudness",
+   "group": "loudness",
+   "value": -11.1,
+   "unit": "LUFS",
+   "range": [
+    -16.0,
+    -9.0
+   ],
+   "basis": "web",
+   "median": -14.1,
+   "typical": [
+    -15.7,
+    -14.1
+   ],
+   "status": "ok",
+   "weight": "critical",
+   "why": "how loud the film plays next to other launch videos: X, LinkedIn and site autoplay do not normalise, YouTube turns masters above -14 LUFS down"
+  },
+  {
+   "metric": "true_peak",
+   "label": "true peak",
+   "group": "loudness",
+   "value": -1.5,
+   "unit": "dBTP",
+   "range": [
+    null,
+    -1.0
+   ],
+   "basis": "web",
+   "median": -3.9,
+   "typical": [
+    -3.98,
+    -0.86
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "a master above -1 dBTP clips once encoded to AAC / MP3 (a decoded lossy file above 0 dBTP already clips on playback): crackle on the biggest hits"
+  },
+  {
+   "metric": "p_real",
+   "label": "realness (p_real)",
+   "group": "realness",
+   "value": null,
+   "unit": "p",
+   "range": [
+    0.77,
+    null
+   ],
+   "basis": "realness model",
+   "median": null,
+   "typical": null,
+   "status": "n.a.",
+   "weight": "critical",
+   "why": "the reference launch films use real recordings and produced music; next to them, code-synthesized sound reads as cheap and generic"
+  },
+  {
+   "metric": "music_frac",
+   "label": "music presence",
+   "group": "music",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.38,
+    null
+   ],
+   "basis": "references",
+   "median": 0.82,
+   "typical": [
+    0.508,
+    0.964
+   ],
+   "status": "n.a.",
+   "weight": "critical",
+   "why": "the references are music-led: one continuous track carries the energy and hides edit seams"
+  },
+  {
+   "metric": "cuts_with_sound",
+   "label": "onset on visual events +-100ms",
+   "group": "sync",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.7999999999999999,
+    null
+   ],
+   "basis": "references",
+   "median": 0.85,
+   "typical": [
+    0.85,
+    0.922
+   ],
+   "status": "n.a.",
+   "weight": "major",
+   "why": "a cut or big visual change with no sound under it feels dead; viewers expect sound on motion"
+  },
+  {
+   "metric": "lra",
+   "label": "loudness range",
+   "group": "loudness",
+   "value": 1.7,
+   "unit": "LU",
+   "range": [
+    0.5,
+    3.2
+   ],
+   "basis": "references",
+   "median": 1.9,
+   "typical": [
+    1.58,
+    2.14
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "how much the loudness swings: launch films keep the body consistently strong"
+  },
+  {
+   "metric": "crest_lu",
+   "label": "loudest 3 s above integrated",
+   "group": "loudness",
+   "value": 1.0,
+   "unit": "LU",
+   "range": [
+    0.5,
+    2.0
+   ],
+   "basis": "references",
+   "median": 1.1,
+   "typical": [
+    1.02,
+    1.42
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "how far the loudest 3 s stick out above the average level"
+  },
+  {
+   "metric": "first_sound_s",
+   "label": "time to first sound",
+   "group": "arc",
+   "value": 0.03,
+   "unit": "s",
+   "range": [
+    null,
+    0.33999999999999997
+   ],
+   "basis": "references",
+   "median": 0.12,
+   "typical": [
+    0.024,
+    0.216
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "silence at the start loses autoplay viewers: the references sound at once"
+  },
+  {
+   "metric": "end_silence_s",
+   "label": "dead air at the end",
+   "group": "ending",
+   "value": 0.01,
+   "unit": "s",
+   "range": [
+    null,
+    0.77
+   ],
+   "basis": "references",
+   "median": 0.21,
+   "typical": [
+    0.098,
+    0.458
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "dead air after the sound stops makes the ending feel unfinished"
+  },
+  {
+   "metric": "max_gap_s",
+   "label": "longest silent gap inside",
+   "group": "arc",
+   "value": 0.0,
+   "unit": "s",
+   "range": [
+    null,
+    0.37
+   ],
+   "basis": "references",
+   "median": 0.04,
+   "typical": [
+    0.008,
+    0.104
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "a silent hole mid-film reads as a mistake unless it is a deliberate stop-down"
+  },
+  {
+   "metric": "final_lu",
+   "label": "final moment vs integrated",
+   "group": "ending",
+   "value": 3.4,
+   "unit": "LU",
+   "range": [
+    -0.30000000000000004,
+    4.4
+   ],
+   "basis": "references",
+   "median": 1.6,
+   "typical": [
+    1.28,
+    2.64
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "the logo / end-card moment should land at body level or above, not fade away"
+  },
+  {
+   "metric": "onset_rate",
+   "label": "onset density",
+   "group": "density",
+   "value": 5.49,
+   "unit": "/s",
+   "range": [
+    4.69,
+    6.9799999999999995
+   ],
+   "basis": "references",
+   "median": 5.58,
+   "typical": [
+    5.108,
+    6.46
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "rhythmic activity: too sparse feels empty, too dense feels cluttered"
+  },
+  {
+   "metric": "hit_rate",
+   "label": "salient hit density",
+   "group": "density",
+   "value": 1.55,
+   "unit": "/s",
+   "range": [
+    1.48,
+    2.16
+   ],
+   "basis": "references",
+   "median": 1.74,
+   "typical": [
+    1.692,
+    1.916
+   ],
+   "status": "ok",
+   "weight": "major",
+   "why": "punch: salient hits mark the key moments; without them nothing lands"
+  },
+  {
+   "metric": "intro_lu",
+   "label": "opening level (first 10%)",
+   "group": "arc",
+   "value": 1.6,
+   "unit": "LU",
+   "range": [
+    -1.0,
+    2.6
+   ],
+   "basis": "references",
+   "median": 0.7,
+   "typical": [
+    0.54,
+    1.02
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "how the film opens: the references open close to body level (one builds up)"
+  },
+  {
+   "metric": "end_lu",
+   "label": "closing level (last 10%)",
+   "group": "arc",
+   "value": -3.3,
+   "unit": "LU",
+   "range": [
+    -4.3,
+    0.7
+   ],
+   "basis": "references",
+   "median": -1.5,
+   "typical": [
+    -2.54,
+    -0.94
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "how the last 10 % sit against the body"
+  },
+  {
+   "metric": "fade_s",
+   "label": "final fade / ring-out length",
+   "group": "ending",
+   "value": 0.26,
+   "unit": "s",
+   "range": [
+    null,
+    2.29
+   ],
+   "basis": "references",
+   "median": 1.02,
+   "typical": [
+    0.204,
+    1.636
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "launch films end on a sting or a hard out; long fade-outs lose the button"
+  },
+  {
+   "metric": "band_sub",
+   "label": "sub 20-60 Hz share",
+   "group": "spectrum",
+   "value": -14.5,
+   "unit": "dB",
+   "range": [
+    -28.9,
+    -18.7
+   ],
+   "basis": "references",
+   "median": -23.1,
+   "typical": [
+    -26.54,
+    -20.78
+   ],
+   "status": "high",
+   "weight": "minor",
+   "why": "sub (20-60 Hz) weight under hits and music",
+   "actions": [
+    "too much 20-60 Hz rumble eats headroom and distorts small speakers: high-pass SFX and ambience at 30-40 Hz and cut the sub of the music by 2-4 dB (-14.5 dB share, refs -27.4 dB .. -20.2 dB)"
+   ]
+  },
+  {
+   "metric": "band_low",
+   "label": "low 60-250 Hz share",
+   "group": "spectrum",
+   "value": -4.8,
+   "unit": "dB",
+   "range": [
+    -7.4,
+    -1.2000000000000002
+   ],
+   "basis": "references",
+   "median": -4.4,
+   "typical": [
+    -5.6,
+    -3.04
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "low end body (60-250 Hz)"
+  },
+  {
+   "metric": "band_lowmid",
+   "label": "low-mid 250-1k share",
+   "group": "spectrum",
+   "value": -3.2,
+   "unit": "dB",
+   "range": [
+    -5.6,
+    -1.9
+   ],
+   "basis": "references",
+   "median": -3.8,
+   "typical": [
+    -4.04,
+    -3.48
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "low-mids (250 Hz-1 kHz): too much = muddy, too little = hollow"
+  },
+  {
+   "metric": "band_mid",
+   "label": "mid 1-4 kHz share",
+   "group": "spectrum",
+   "value": -9.9,
+   "unit": "dB",
+   "range": [
+    -15.7,
+    -4.6
+   ],
+   "basis": "references",
+   "median": -9.1,
+   "typical": [
+    -13.18,
+    -6.7
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "mids (1-4 kHz): where clicks and voice cut through phone speakers"
+  },
+  {
+   "metric": "band_presence",
+   "label": "presence 4-8 kHz share",
+   "group": "spectrum",
+   "value": -14.5,
+   "unit": "dB",
+   "range": [
+    -16.6,
+    -12.6
+   ],
+   "basis": "references",
+   "median": -15.1,
+   "typical": [
+    -15.1,
+    -14.3
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "presence (4-8 kHz): bite of transients, clicks and typing"
+  },
+  {
+   "metric": "band_air",
+   "label": "air 8-16 kHz share",
+   "group": "spectrum",
+   "value": -16.2,
+   "unit": "dB",
+   "range": [
+    -27.6,
+    -13.9
+   ],
+   "basis": "references",
+   "median": -18.3,
+   "typical": [
+    -24.54,
+    -15.98
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "air (8-16 kHz): openness; missing air sounds muffled or low-bitrate"
+  },
+  {
+   "metric": "side_to_mid_db",
+   "label": "stereo width (side vs mid)",
+   "group": "stereo",
+   "value": -40.0,
+   "unit": "dB",
+   "range": [
+    -41.0,
+    -26.9
+   ],
+   "basis": "references",
+   "median": -39.8,
+   "typical": [
+    -39.96,
+    -30.28
+   ],
+   "status": "ok",
+   "weight": "minor",
+   "why": "stereo width: near-mono sounds small, too wide collapses on phones"
+  },
+  {
+   "metric": "speech_frac",
+   "label": "voice / speech presence",
+   "group": "music",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.9,
+    1.0
+   ],
+   "basis": "references",
+   "median": 1.0,
+   "typical": [
+    0.92,
+    1.0
+   ],
+   "status": "n.a.",
+   "weight": "info",
+   "why": "voice share (4 of 7 references have a voice-over, 3 are music-only)"
+  },
+  {
+   "metric": "tempo",
+   "label": "tempo",
+   "group": "music",
+   "value": 105,
+   "unit": "BPM",
+   "range": [
+    108.0,
+    136.0
+   ],
+   "basis": "references",
+   "median": 120.0,
+   "typical": [
+    110.4,
+    132.8
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "music tempo"
+  },
+  {
+   "metric": "peak_pos",
+   "label": "position of the loudest 3 s",
+   "group": "arc",
+   "value": 0.33,
+   "unit": "0-1",
+   "range": [
+    0.26,
+    0.68
+   ],
+   "basis": "references",
+   "median": 0.42,
+   "typical": [
+    0.292,
+    0.628
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "where the loudest moment sits"
+  },
+  {
+   "metric": "tail_s",
+   "label": "final hit ring-out",
+   "group": "ending",
+   "value": 1.35,
+   "unit": "s",
+   "range": [
+    0.49,
+    2.81
+   ],
+   "basis": "references",
+   "median": 1.21,
+   "typical": [
+    0.634,
+    2.49
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "how long the final hit rings out"
+  },
+  {
+   "metric": "stopdowns_min",
+   "label": "stop-downs",
+   "group": "density",
+   "value": 0.0,
+   "unit": "/min",
+   "range": [
+    3.3,
+    21.6
+   ],
+   "basis": "references",
+   "median": 5.5,
+   "typical": [
+    3.74,
+    18.38
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "short drop-outs before hits (4 of 7 references use them)"
+  },
+  {
+   "metric": "cut_rate",
+   "label": "visual events (cuts, big changes)",
+   "group": "sync",
+   "value": null,
+   "unit": "/s",
+   "range": [
+    0.4,
+    0.64
+   ],
+   "basis": "references",
+   "median": 0.4,
+   "typical": [
+    0.4,
+    0.592
+   ],
+   "status": "n.a.",
+   "weight": "info",
+   "why": "edit pace (visual events per second)"
+  },
+  {
+   "metric": "cut_hit_frac",
+   "label": "visual events with a salient hit +-100 ms",
+   "group": "sync",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.31,
+    0.62
+   ],
+   "basis": "references",
+   "median": 0.45,
+   "typical": [
+    0.338,
+    0.586
+   ],
+   "status": "n.a.",
+   "weight": "info",
+   "why": "visual events with a salient hit (references: near chance)"
+  },
+  {
+   "metric": "cut_frame_sync",
+   "label": "visual events with an onset +-1 frame",
+   "group": "sync",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.46,
+    0.66
+   ],
+   "basis": "references",
+   "median": 0.55,
+   "typical": [
+    0.478,
+    0.638
+   ],
+   "status": "n.a.",
+   "weight": "info",
+   "why": "visual events with an onset within one frame (references: near chance)"
+  },
+  {
+   "metric": "cuts_on_beat",
+   "label": "visual events on the beat grid +-70 ms",
+   "group": "sync",
+   "value": null,
+   "unit": "share",
+   "range": [
+    0.15,
+    0.38
+   ],
+   "basis": "references",
+   "median": 0.29,
+   "typical": [
+    0.178,
+    0.362
+   ],
+   "status": "n.a.",
+   "weight": "info",
+   "why": "visual events on the beat grid (references: near chance)"
+  },
+  {
+   "metric": "brightness_hz",
+   "label": "brightness (median spectral centroid)",
+   "group": "spectrum",
+   "value": 2015,
+   "unit": "Hz",
+   "range": [
+    1271.0,
+    1915.0
+   ],
+   "basis": "references",
+   "median": 1478.0,
+   "typical": [
+    1312.4,
+    1827.6
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "perceived brightness of the mix"
+  },
+  {
+   "metric": "correlation",
+   "label": "L/R correlation",
+   "group": "stereo",
+   "value": 1.0,
+   "unit": "r",
+   "range": [
+    1.0,
+    1.0
+   ],
+   "basis": "references",
+   "median": 1.0,
+   "typical": [
+    1.0,
+    1.0
+   ],
+   "status": "info",
+   "weight": "info",
+   "why": "L/R correlation (1 = mono)"
+  }
+ ],
+ "reference_match": null,
+ "events": {
+  "visual": [],
+  "visual_without_onset": [],
+  "visual_without_any_sound": null,
+  "visual_without_hit": [],
+  "hits": [
+   0.36,
+   0.934,
+   1.222,
+   2.72,
+   2.822,
+   3.384,
+   3.982,
+   4.406,
+   5.068,
+   5.526,
+   6.182,
+   6.56,
+   7.364,
+   7.942,
+   8.526,
+   8.774,
+   9.228,
+   9.572,
+   9.978,
+   11.268,
+   11.572,
+   11.956,
+   13.21,
+   14.65,
+   15.408,
+   15.924
+  ],
+  "stopdowns": []
+ },
+ "arc": {
+  "film": [
+   1.7,
+   -0.1,
+   -0.8,
+   0.3,
+   0.6,
+   0.5,
+   0.3,
+   -0.3,
+   0.5,
+   -0.3,
+   -3.4
+  ],
+  "refs_median": [
+   0.8,
+   0.1,
+   0.5,
+   -0.6,
+   -0.1,
+   0.0,
+   0.0,
+   -0.1,
+   0.0,
+   -0.4,
+   -6.6
+  ],
+  "refs_p10": [
+   0.8,
+   -0.5,
+   -0.4,
+   -0.8,
+   -0.3,
+   -0.4,
+   -0.4,
+   -0.5,
+   -0.2,
+   -0.4,
+   -10.7
+  ],
+  "refs_p90": [
+   1.5,
+   0.3,
+   0.7,
+   -0.0,
+   0.4,
+   0.1,
+   0.1,
+   0.3,
+   0.2,
+   -0.4,
+   -2.1
+  ]
+ },
+ "realness": null,
+ "seconds": 0.9,
+ "not_measured": {
+  "skipped by --fast": [
+   "p_real",
+   "music_frac"
+  ],
+  "no picture: pass --video film.mp4": [
+   "cuts_with_sound"
+  ]
+ },
+ "summary": "mix.wav vs 3 reference films (../../../../references/analysis/earshot-profile.json): launch-grade (partial: realness and music presence not checked) - 19 of 20 scored metrics in range (weighted 97%), 0 critical and 0 major issues. Fix first: too much 20-60 Hz rumble eats headroom and distorts small speakers: high-pass SFX and ambience at 30-40 Hz and cut the sub of the music by 2-4 dB (-14.5 dB share, refs -27.4 dB .. -20.2 dB). Not measured: p_real, music_frac (skipped by --fast); cuts_with_sound (no picture: pass --video film.mp4).",
+ "text": "earshot critique: mix.wav (16.8 s) vs 3 reference films (../../../../references/analysis/earshot-profile.json)\nVERDICT: launch-grade (partial: realness and music presence not checked) - 19 of 20 scored metrics in range (weighted 97%), 0 critical and 0 major issues.\n  (run without --fast before shipping: realness and music presence are critical checks)\nFIX FIRST (most important first):\n  1. [minor] too much 20-60 Hz rumble eats headroom and distorts small speakers: high-pass SFX and ambience at 30-40 Hz and cut the sub of the music by 2-4 dB (-14.5 dB share, refs -27.4 dB .. -20.2 dB)\nNOT MEASURED: p_real, music_frac (skipped by --fast); cuts_with_sound (no picture: pass --video film.mp4)\nSCORECARD                                      value   ok range                        ref median  status\n  loudness integrated loudness             -11.1 LUFS   -16.0 LUFS .. -9.0 LUFS (web)   -14.1 LUFS  ok\n  loudness true peak                        -1.5 dBTP   <= -1.0 dBTP (web)               -3.9 dBTP  ok\n  realness realness (p_real)                     n.a.   >= 0.77 (realness model)                    n.a.\n  music    music presence                        n.a.   >= 38%                                 82%  n.a.\n  sync     onset on visual events +-100ms        n.a.   >= 80%                                 85%  n.a.\n  loudness loudness range                      1.7 LU   0.5 LU .. 3.2 LU                    1.9 LU  ok\n  loudness loudest 3 s above integrated        1.0 LU   0.5 LU .. 2.0 LU                    1.1 LU  ok\n  arc      time to first sound                 0.03 s   <= 0.34 s                           0.12 s  ok\n  ending   dead air at the end                 0.01 s   <= 0.77 s                           0.21 s  ok\n  arc      longest silent gap inside           0.00 s   <= 0.37 s                           0.04 s  ok\n  ending   final moment vs integrated          3.4 LU   -0.3 LU .. 4.4 LU                   1.6 LU  ok\n  density  onset density                      5.49 /s   4.69 /s .. 6.98 /s                 5.58 /s  ok\n  density  salient hit density                1.55 /s   1.48 /s .. 2.16 /s                 1.74 /s  ok\n  arc      opening level (first 10%)           1.6 LU   -1.0 LU .. 2.6 LU                   0.7 LU  ok\n  arc      closing level (last 10%)           -3.3 LU   -4.3 LU .. 0.7 LU                  -1.5 LU  ok\n  ending   final fade / ring-out length        0.26 s   <= 2.29 s                           1.02 s  ok\n  spectrum sub 20-60 Hz share                -14.5 dB   -28.9 dB .. -18.7 dB              -23.1 dB  high (minor)\n  spectrum low 60-250 Hz share                -4.8 dB   -7.4 dB .. -1.2 dB                 -4.4 dB  ok\n  spectrum low-mid 250-1k share               -3.2 dB   -5.6 dB .. -1.9 dB                 -3.8 dB  ok\n  spectrum mid 1-4 kHz share                  -9.9 dB   -15.7 dB .. -4.6 dB                -9.1 dB  ok\n  spectrum presence 4-8 kHz share            -14.5 dB   -16.6 dB .. -12.6 dB              -15.1 dB  ok\n  spectrum air 8-16 kHz share                -16.2 dB   -27.6 dB .. -13.9 dB              -18.3 dB  ok\n  stereo   stereo width (side vs mid)        -40.0 dB   -41.0 dB .. -26.9 dB              -39.8 dB  ok\nLOUDNESS ARC (LU vs integrated at 0%, 10% .. 100% of the film; not scored):\n  this film      +1.7   -0.1   -0.8   +0.3   +0.6   +0.5   +0.3   -0.3   +0.5   -0.3   -3.4\n  refs median    +0.8   +0.1   +0.5   -0.6   -0.1   +0.0   +0.0   -0.1   +0.0   -0.4   -6.6\nNOT SCORED (style choices, shown for context):\n  tempo                                                         105 BPM   refs p10-p90 110 BPM .. 133 BPM\n  position of the loudest 3 s                                      0.33   refs p10-p90 0.29 .. 0.63\n  final hit ring-out                                             1.35 s   refs p10-p90 0.63 s .. 2.49 s\n  stop-downs                                                   0.0 /min   refs p10-p90 3.7 /min .. 18.4 /min\n  brightness (median spectral centroid)                         2015 Hz   refs p10-p90 1312 Hz .. 1828 Hz\n  L/R correlation                                                  1.00   refs p10-p90 1.00 .. 1.00"
+}

@@ -75,6 +75,54 @@ Frames and contact sheets: `references/analysis/reference-N/` (`1fps/`, `cuts/`,
 | Ref 2 | Counter + chart moving together; filled highlight box on keywords; colour = meaning | Numbers count with an accelerating ease and a chart or bar that grows with them. Keywords get a highlight box. Orange = problem/attention, green = good. |
 | Ref 3 | 0.6 to 3 s pacing; a sound on every cut; one bold accent colour on light and dark; the signature transition | New element at least every 2 to 3 s, a sound on every transition, and our own signature transition (a rounded-square "tile wipe", based on our logo). |
 
-**Subtitles (added 2026-11-16):** Ref 1's subtitle pill (2 to 3 words, pale words turning dark as they are spoken, a solid box on the key word, about 75 % down the frame) and Ref 2's grey-to-white word fill. We restyle both in our colours: a dark pill, sage to white, an orange key-word box, left-aligned at y 1268 px (see STYLE-SHEET.md section 7).
+**Subtitles:** tried in v2 (Ref 1's bottom pill), removed on 2026-11-17: it repeated the on-screen title. Our only speech-following text is the centred title revealed word by word.
 
 **Not taken:** the off-edge headline bleed (it breaks our safe margins), their product names, UI copies, numbers, logos and colour palettes.
+
+---
+
+# References 4 and 5 (added 2026-11-17): variety, smoothness, premium subtitles
+
+Two newer vertical explainers (720 x 1280, 30 fps): Ref 4 (71.6 s, light canvas, blue accent) and Ref 5 (43.7 s, warm light canvas, peach accent). Frames: `reference-4/`, `reference-5/` (1fps, cuts, contact sheet, `motion_*.jpg`). Subtitle crops: `subtitle-study/subs-4-5.png`, motion strips: `subtitle-study/motion-4-5.jpg`.
+We take techniques only, never their content, products, names or colours.
+
+## Measured smoothness (`tools/smooth.py`)
+
+| | Ref 4 | Ref 5 | Ref 3 | Our test-run |
+|---|---|---|---|---|
+| Hard cuts | 1 in 71 s | 0 in 44 s | 16 | 0 (but 4 full-frame transitions) |
+| Frames with motion | 39 % | 13 % | 83 % | 14 % |
+| Burstiness (share of all motion in the busiest 5 % of frames) | **48 %** | **57 %** | 53 % | **78 %** |
+| Single-frame pops | 0.08 /s | 0.57 /s | 0.33 /s | 0 /s |
+
+Why ours felt jumpy: the motion was clumped into a few big full-frame events (tile wipe, whip, zoom-through, blur swaps of the whole stage) with still holds between them. The references spread change over many frames and never move the whole frame at once.
+
+## How they stay smooth while fast
+
+1. **One continuous canvas.** No scene cuts. The background and the stage persist; only the objects on it change.
+2. **Objects become the next object.** A repo card shrinks into a phone card, lines grow out of it to more cards (Ref 5); a small input box grows into a full field, a badge fades and blurs as icons burst out of it (Ref 4).
+3. **Build, don't swap.** Timelines add one track per spoken word, grids fill cell by cell, lists add a row per word. The visual grows instead of being replaced.
+4. **Short travel, soft combos.** Elements move tens of pixels, not across the screen, always combining opacity + small scale (about 0.92 to 1) + blur (about 6 px to 0). Long ease-out tails, no hard stops.
+5. **Exits overlap entrances.** The old element blurs and fades (0.3 to 0.4 s) while the new one is already arriving.
+6. **Only one or two things move fast at once.** Everything else holds still or drifts slowly.
+
+## Variety of visual formats (no two beats look alike)
+
+Ref 4: hero app icon with blur glow, a field of app tiles with one highlighted, flow diagram (logo → line chart → app), rotated price stamp ("$0"), icon constellation around a big number, terminal with typing, easing-curve graph with keyframe diamonds, audio waveform with timed caption chips, bouncing-square physics arc, mini dashboard with a bar chart, stacked cards with a red ✗, search bar + messy scribble → clean upward line, list of people with "?" questions, staircase drop chart with a calendar, lightbulb idea tile, crowd of people icons, dark keyboard close-up while typing, script page with an Approve button, storyboard grid of icons, circular workflow orbit with a big number, comment card with a CTA pill.
+Ref 5: repo card with a star counter and spark line, phone card branching into a network of cards, centred product name card, feed card with view counts, terminal-style agent command, script page with highlighted lines, editing timeline with tracks filling per word, before/after ≠ comparison with a checklist, giant number + grid of 100 tiles, receipt card with "$0" and a green check, install command with a success pill, comment card with a giant stamped keyword.
+
+## Premium subtitles
+
+- **Regular weight, not bold.** Normal words in a regular/light sans (about 400) in mid grey; only the key words switch to a dark semibold (about 600).
+- **Key-word styles:** Ref 4: the key word in an accent-coloured italic serif ("*broke*") or the last word in semibold; Ref 5: a thin accent **selection frame** with tiny square corner handles around the key word or phrase (design-tool look).
+- **Reveal:** words appear one by one with the voice; the previous phrase blurs out as the new one starts. One or two lines, centred.
+- **Context line above:** a tiny spaced-caps label (brand name or "01 · SET UP" chapter pills) sits above the subtitle.
+
+## What we take
+
+| Take | Our rule (STYLE-SHEET v5) |
+|---|---|
+| Continuous canvas, objects become objects | No full-frame transitions; scenes hand over by morph, carry, build-on or a soft overlapped crossfade (section 5) |
+| Spread, soft motion | Smoothness rules + a measured target: burstiness at most 60 %, no single-frame pops (section 4) |
+| Format variety | A visual format library; never the same format twice in a row; at least 5 formats per video (section 10) |
+| Premium subtitles | Outfit 400 for normal words, 600 for key words, subtle shadow, three key-word styles incl. the selection frame (section 7) |
